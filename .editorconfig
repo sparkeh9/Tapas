@@ -1,0 +1,25 @@
+root = true
+
+[*]
+end_of_line = crlf
+indent_style = space
+indent_size = 4
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+# avoid this. unless absolutely necessary
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion
+
+# only use var when it's obvious what the variable type is
+csharp_style_var_for_built_in_types = false:none
+
+# use language keywords instead of BCL types
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion
+
+[*.{yml,json}]
+indent_style = space
+indent_size = 2

@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Demo.Web", "src\Tapas.Demo.Web\Tapas.Demo.Web.csproj", "{79507A7A-49C1-46A7-87BD-4627938929FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{6B3E8805-047C-4C23-859E-19A378A58E7A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Force-Clean.ps1 = Force-Clean.ps1
+		Force-Clean.sh = Force-Clean.sh
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{D3F66F06-C2B8-4EB8-A433-854A33905015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Backend.Core", "src\Tapas.Backend.Core\Tapas.Backend.Core.csproj", "{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Debug|x64.Build.0 = Debug|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Release|x64.Build.0 = Release|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{79507A7A-49C1-46A7-87BD-4627938929FF}.Release|x86.Build.0 = Release|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Debug|x64.Build.0 = Debug|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Debug|x86.Build.0 = Debug|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Release|x64.ActiveCfg = Release|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Release|x64.Build.0 = Release|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Release|x86.ActiveCfg = Release|Any CPU
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0D31BDB8-6E0C-4B6F-97C8-8572260EEA37} = {D3F66F06-C2B8-4EB8-A433-854A33905015}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09CE6689-D73B-4AA1-BEF9-695B009B99FB}
+	EndGlobalSection
+EndGlobal
