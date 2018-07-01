@@ -10,8 +10,7 @@
 
     public class Startup
     {
-        public string extensionsPath { get; set; }
-
+        private readonly string extensionsPath;
         public IConfiguration Configuration { get; }
 
         public Startup( IConfiguration configuration, IHostingEnvironment hostingEnvironment )
@@ -51,14 +50,8 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
             app.UseExtCore();
-            app.UseMvc( routes =>
-                        {
-                            routes.MapRoute(
-                                            "default",
-                                            "{controller=Home}/{action=Index}/{id?}" );
-                        } );
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
