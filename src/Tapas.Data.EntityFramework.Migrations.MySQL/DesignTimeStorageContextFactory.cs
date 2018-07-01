@@ -1,4 +1,4 @@
-﻿namespace Tapas.EntityFramework.Migrations.MySQL
+﻿namespace Tapas.Data.EntityFramework.Migrations.MySQL
 {
     using ExtCore.Data.EntityFramework;
     using ExtCore.Data.EntityFramework.MySql;

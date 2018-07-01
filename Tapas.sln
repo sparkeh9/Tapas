@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Demo.Web", "src\Tapas
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityFramework", "EntityFramework", "{DF6540B5-84BB-4D98-8C5D-9F17FEAA0DF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.EntityFramework.Migrations.MySQL", "src\Tapas.EntityFramework.Migrations\Tapas.EntityFramework.Migrations.MySQL.csproj", "{61ED8A09-64FA-4CB8-B8BB-2FFA043EA573}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.EntityFramework.Migrations.MySQL", "src\Tapas.Data.EntityFramework.Migrations.MySQL\Tapas.Data.EntityFramework.Migrations.MySQL.csproj", "{61ED8A09-64FA-4CB8-B8BB-2FFA043EA573}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

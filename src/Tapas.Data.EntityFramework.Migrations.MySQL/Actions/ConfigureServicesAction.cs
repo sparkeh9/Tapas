@@ -1,4 +1,4 @@
-﻿namespace Tapas.EntityFramework.Migrations.MySQL.Actions
+﻿namespace Tapas.Data.EntityFramework.Migrations.MySQL.Actions
 {
     using System;
     using System.Reflection;
