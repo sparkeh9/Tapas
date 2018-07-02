@@ -1,5 +1,7 @@
 ﻿namespace Tapas.Data.EntityFramework
 {
+    using System.Threading.Tasks;
+
     public interface IProcessor
     {
         Task ProcessAsync( IDatabaseContext context );

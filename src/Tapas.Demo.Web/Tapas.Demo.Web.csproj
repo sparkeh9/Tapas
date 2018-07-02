@@ -1,13 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ExtCore.Mvc" Version="3.2.0" />
-    <PackageReference Include="ExtCore.WebApplication" Version="3.2.0" />
+    <PackageReference Include="ExtCore.Mvc" Version="3.3.0-beta3" />
+    <PackageReference Include="ExtCore.WebApplication" Version="3.3.0-beta3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tapas.Authentication\Tapas.Authentication.csproj" />
+    <ProjectReference Include="..\Tapas.Backend.Core\Tapas.Backend.Core.csproj" />
+    <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
+    <ProjectReference Include="..\Tapas.Data.EntityFramework.MySQL\Tapas.Data.EntityFramework.MySQL.csproj" />
+    <ProjectReference Include="..\Tapas.Data.EntityFramework\Tapas.Data.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>

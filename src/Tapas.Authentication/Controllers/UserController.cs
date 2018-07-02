@@ -2,19 +2,25 @@
 {
     using System;
     using System.Threading.Tasks;
+    using Core.Entities;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models;
 
     public class UserController : Controller
     {
-        private readonly SignInManager<IdentityUser> signInManager;
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public UserController( UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager )
+        public UserController( UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager )
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+        }
+
+        public IActionResult Login()
+        {
+            return View();
         }
 
         [ HttpPost ]
@@ -62,7 +68,7 @@
                 return View( model );
             }
 
-            var user = new IdentityUser
+            var user = new ApplicationUser
             {
                 UserName = model.UserName,
                 Email = model.Email
@@ -73,8 +79,7 @@
             {
                 await signInManager.SignInAsync( user, false );
 
-                string confrimationCode =
-                    await userManager.GenerateEmailConfirmationTokenAsync( user );
+                string confrimationCode = await userManager.GenerateEmailConfirmationTokenAsync( user );
 
                 string callbackurl = Url.Action(
                                                 controller : "User",

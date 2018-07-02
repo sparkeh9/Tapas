@@ -1,8 +1,9 @@
 ﻿namespace Tapas.Data.EntityFramework.MySQL.Actions
 {
     using System;
-    using Entities;
-    using ExtCore.Data.Abstractions;
+    using System.Reflection;
+    using Core.Entities;
+    using ExtCore.Data.EntityFramework;
     using ExtCore.Infrastructure.Actions;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -11,20 +12,25 @@
 
     public class ConfigureServicesAction : IConfigureServicesAction
     {
-        public int Priority => 1000;
+        public int Priority => 100;
 
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
-            var configuration = serviceCollection.BuildServiceProvider()
-                                                 .GetService<IConfigurationRoot>();
+            var configuration = serviceProvider.GetService<IConfiguration>();
 
-            serviceCollection.AddDbContext<ApplicationDbContext>( options => options.UseMySQL( configuration.GetConnectionString( "Default" ) ) );
-
+            string defaultConnectionString = configuration.GetConnectionString( "Default" );
+            serviceCollection.AddDbContextPool<ApplicationDbContext>( options => options.UseMySql( defaultConnectionString ) );
             serviceCollection.AddIdentity<ApplicationUser, ApplicationRole>()
                              .AddEntityFrameworkStores<ApplicationDbContext>()
                              .AddDefaultTokenProviders();
+            serviceCollection.Configure<StorageContextOptions>( options =>
+                                                                {
+                                                                    options.ConnectionString = defaultConnectionString;
+                                                                    options.MigrationsAssembly = typeof( DesignTimeStorageContextFactory ).GetTypeInfo().Assembly.FullName;
+                                                                } );
 
-            serviceCollection.AddScoped( typeof( IStorageContext ), typeof( ApplicationDbContext ) );
+
+            DesignTimeStorageContextFactory.Initialize( serviceCollection.BuildServiceProvider() );
         }
     }
 }
