@@ -2,10 +2,10 @@
 {
     using System;
     using System.Threading.Tasks;
-    using Core.Entities;
+    using Data.EntityFramework.Entities;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Models;
+    using ViewModels;
 
     public class UserController : Controller
     {
@@ -79,12 +79,12 @@
             {
                 await signInManager.SignInAsync( user, false );
 
-                string confrimationCode = await userManager.GenerateEmailConfirmationTokenAsync( user );
+                string confirmationCode = await userManager.GenerateEmailConfirmationTokenAsync( user );
 
-                string callbackurl = Url.Action(
+                string callback = Url.Action(
                                                 controller : "User",
                                                 action : "Confirm",
-                                                values : new { userId = user.Id, code = confrimationCode },
+                                                values : new { userId = user.Id, code = confirmationCode },
                                                 protocol : Request.Scheme );
 
 //                await this.emailSender.SendEmailAsync(

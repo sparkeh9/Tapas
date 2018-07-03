@@ -1,7 +1,6 @@
 ﻿namespace Tapas.Authentication.Actions
 {
     using System;
-    using Core.Entities;
     using ExtCore.Infrastructure.Actions;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;

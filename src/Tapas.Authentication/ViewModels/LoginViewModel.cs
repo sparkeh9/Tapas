@@ -1,4 +1,4 @@
-﻿namespace Tapas.Authentication.Models
+﻿namespace Tapas.Authentication.ViewModels
 {
     using System.ComponentModel.DataAnnotations;
 

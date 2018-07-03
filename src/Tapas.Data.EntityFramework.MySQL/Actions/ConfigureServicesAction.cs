@@ -2,7 +2,7 @@
 {
     using System;
     using System.Reflection;
-    using Core.Entities;
+    using Entities;
     using ExtCore.Data.EntityFramework;
     using ExtCore.Infrastructure.Actions;
     using Microsoft.AspNetCore.Identity;

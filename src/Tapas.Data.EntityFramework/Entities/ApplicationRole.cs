@@ -1,4 +1,4 @@
-﻿namespace Tapas.Core.Entities
+﻿namespace Tapas.Data.EntityFramework.Entities
 {
     using Microsoft.AspNetCore.Identity;
 

@@ -1,6 +1,6 @@
 ﻿namespace Tapas.Data.EntityFramework
 {
-    using Core.Entities;
+    using Entities;
     using ExtCore.Data.Abstractions;
     using ExtCore.Data.EntityFramework;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
