@@ -1,5 +1,6 @@
 ﻿namespace Tapas.Demo.Web
 {
+    using ExtCore.Data.EntityFramework;
     using ExtCore.WebApplication.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -23,14 +24,14 @@
         public void ConfigureServices( IServiceCollection services )
         {
             services.AddSingleton( Configuration );
-            services.AddExtCore( extensionsPath );
+            services.Configure<StorageContextOptions>( Configuration.GetSection( "StorageContext" ) );
             services.Configure<CookiePolicyOptions>( options =>
                                                      {
                                                          // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                                                          options.CheckConsentNeeded = context => true;
                                                          options.MinimumSameSitePolicy = SameSiteMode.None;
                                                      } );
-
+            services.AddExtCore( extensionsPath );
             services.AddMvc()
                     .SetCompatibilityVersion( CompatibilityVersion.Version_2_1 );
         }

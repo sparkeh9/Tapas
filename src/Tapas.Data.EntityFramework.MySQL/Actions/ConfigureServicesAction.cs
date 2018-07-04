@@ -3,12 +3,13 @@
     using System;
     using System.Reflection;
     using Entities;
+    using ExtCore.Data.Abstractions;
     using ExtCore.Data.EntityFramework;
     using ExtCore.Infrastructure.Actions;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Options;
 
     public class ConfigureServicesAction : IConfigureServicesAction
     {
@@ -16,21 +17,14 @@
 
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
-            var configuration = serviceProvider.GetService<IConfiguration>();
+            var storage = serviceProvider.GetService<IOptions<StorageContextOptions>>();
 
-            string defaultConnectionString = configuration.GetConnectionString( "Default" );
-            serviceCollection.AddDbContextPool<ApplicationDbContext>( options => options.UseMySql( defaultConnectionString ) );
+            DesignTimeStorageContextFactory.Initialize( serviceCollection.BuildServiceProvider() );
+            serviceCollection.AddScoped( typeof( IStorageContext ), typeof( ApplicationDbContext ) );
+            serviceCollection.AddDbContextPool<ApplicationDbContext>( options => options.UseMySql( storage.Value.ConnectionString, b => b.MigrationsAssembly( storage?.Value?.MigrationsAssembly ?? typeof( DesignTimeStorageContextFactory ).GetTypeInfo().Assembly.FullName ) ) );
             serviceCollection.AddIdentity<ApplicationUser, ApplicationRole>()
                              .AddEntityFrameworkStores<ApplicationDbContext>()
                              .AddDefaultTokenProviders();
-            serviceCollection.Configure<StorageContextOptions>( options =>
-                                                                {
-                                                                    options.ConnectionString = defaultConnectionString;
-                                                                    options.MigrationsAssembly = typeof( DesignTimeStorageContextFactory ).GetTypeInfo().Assembly.FullName;
-                                                                } );
-
-
-            DesignTimeStorageContextFactory.Initialize( serviceCollection.BuildServiceProvider() );
         }
     }
 }
