@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Authentication.Actions
 {
     using System;
+    using Data.EntityFramework.Entities;
     using ExtCore.Infrastructure.Actions;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
@@ -15,7 +16,7 @@
         {
             var configuration = serviceCollection.BuildServiceProvider()
                                                  .GetService<IConfiguration>();
-//            serviceCollection.AddScoped<UserManager<ApplicationUser>, UserManager<ApplicationUser>>();
+            serviceCollection.AddScoped<UserManager<ApplicationUser>, UserManager<ApplicationUser>>();
 //            serviceCollection.AddScoped<SignInManager<ApplicationUser>, SignInManager<ApplicationUser>>();
             serviceCollection.Configure<IdentityOptions>( options =>
                                                           {

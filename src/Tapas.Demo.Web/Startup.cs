@@ -1,11 +1,14 @@
 ﻿namespace Tapas.Demo.Web
 {
+    using System;
+    using Data.EntityFramework;
     using ExtCore.Data.EntityFramework;
     using ExtCore.WebApplication.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
@@ -37,7 +40,7 @@
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure( IApplicationBuilder app, IHostingEnvironment env )
+        public void Configure( IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider )
         {
             if ( env.IsDevelopment() )
             {
@@ -50,6 +53,11 @@
             }
 
             app.UseExtCore();
+
+            serviceProvider.GetService<ApplicationDbContext>()
+                           ?.Database
+                           ?.Migrate();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

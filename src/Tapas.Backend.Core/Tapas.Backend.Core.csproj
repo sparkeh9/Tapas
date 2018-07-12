@@ -12,5 +12,9 @@
         <EmbeddedResource Include="Areas\Backend\Views\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
+    </ItemGroup>
+
 
 </Project>

@@ -2,6 +2,14 @@
 {
     using System;
     using System.Reflection;
+    using Entities;
+    using ExtCore.Data.Abstractions;
+    using ExtCore.Data.EntityFramework;
+    using ExtCore.Infrastructure.Actions;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Options;
 
     public class ConfigureServicesAction : IConfigureServicesAction
     {

@@ -21,7 +21,15 @@
 
             DesignTimeStorageContextFactory.Initialize( serviceCollection.BuildServiceProvider() );
             serviceCollection.AddScoped( typeof( IStorageContext ), typeof( ApplicationDbContext ) );
-            serviceCollection.AddDbContextPool<ApplicationDbContext>( options => options.UseSqlServer( storage.Value.ConnectionString, b => b.MigrationsAssembly( storage?.Value?.MigrationsAssembly ?? typeof( DesignTimeStorageContextFactory ).GetTypeInfo().Assembly.FullName ) ) );
+            serviceCollection.AddDbContextPool<ApplicationDbContext>( options =>
+                                                                      {
+                                                                          options.UseSqlServer( storage.Value.ConnectionString,
+                                                                                                b =>
+                                                                                                {
+                                                                                                    b.EnableRetryOnFailure( 5, TimeSpan.FromSeconds( 10 ),null );
+                                                                                                    b.MigrationsAssembly( storage?.Value?.MigrationsAssembly ?? typeof( DesignTimeStorageContextFactory ).GetTypeInfo().Assembly.FullName );
+                                                                                                } );
+                                                                      } );
             serviceCollection.AddIdentity<ApplicationUser, ApplicationRole>()
                              .AddEntityFrameworkStores<ApplicationDbContext>()
                              .AddDefaultTokenProviders();
