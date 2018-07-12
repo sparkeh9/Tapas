@@ -1,4 +1,4 @@
-﻿namespace Tapas.Data.EntityFramework.SqlServer
+﻿namespace Tapas.Data.EntityFramework.PostgreSql
 {
     using ExtCore.Data.EntityFramework;
     using Microsoft.EntityFrameworkCore;
@@ -18,12 +18,12 @@
 
             if ( string.IsNullOrEmpty( MigrationsAssembly ) )
             {
-                optionsBuilder.UseSqlServer( ConnectionString );
+                optionsBuilder.UseNpgsql( ConnectionString );
             }
 
             else
             {
-                optionsBuilder.UseSqlServer( ConnectionString, options => { options.MigrationsAssembly( MigrationsAssembly ); } );
+                optionsBuilder.UseNpgsql( ConnectionString, options => { options.MigrationsAssembly( MigrationsAssembly ); } );
             }
         }
     }

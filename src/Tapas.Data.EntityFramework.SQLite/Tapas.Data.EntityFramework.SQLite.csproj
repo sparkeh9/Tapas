@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ExtCore.Mvc.Infrastructure" Version="3.3.0-beta3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Tapas.Data.EntityFramework\Tapas.Data.EntityFramework.csproj" />
+    </ItemGroup>
+
+</Project>

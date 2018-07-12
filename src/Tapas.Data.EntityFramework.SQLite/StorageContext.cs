@@ -1,4 +1,4 @@
-﻿namespace Tapas.Data.EntityFramework.SqlServer
+﻿namespace Tapas.Data.EntityFramework.SQLite
 {
     using ExtCore.Data.EntityFramework;
     using Microsoft.EntityFrameworkCore;
@@ -18,12 +18,12 @@
 
             if ( string.IsNullOrEmpty( MigrationsAssembly ) )
             {
-                optionsBuilder.UseSqlServer( ConnectionString );
+                optionsBuilder.UseSqlite( ConnectionString );
             }
 
             else
             {
-                optionsBuilder.UseSqlServer( ConnectionString, options => { options.MigrationsAssembly( MigrationsAssembly ); } );
+                optionsBuilder.UseSqlite( ConnectionString, options => { options.MigrationsAssembly( MigrationsAssembly ); } );
             }
         }
     }
