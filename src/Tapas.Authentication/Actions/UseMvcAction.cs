@@ -11,7 +11,7 @@
 
         public void Execute( IRouteBuilder routeBuilder, IServiceProvider serviceProvider )
         {
-            routeBuilder.MapRoute( "users", "{controller=User}/{action=Login}" ); 
+//            routeBuilder.MapRoute( "users", "{controller=User}/{action=Login}" ); 
         }
     }
 }

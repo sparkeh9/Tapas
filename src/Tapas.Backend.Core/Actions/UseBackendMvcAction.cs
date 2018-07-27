@@ -28,7 +28,7 @@
 
             if ( options == null )
             {
-                routePrefix = "backend";
+                routePrefix = "backend/";
             }
             else if ( options.RoutePrefix.IsNullOrWhiteSpace() )
             {

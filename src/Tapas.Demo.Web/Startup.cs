@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Demo.Web
 {
     using System;
+    using Backend.Core;
     using Data.EntityFramework;
     using ExtCore.Data.EntityFramework;
     using ExtCore.WebApplication.Extensions;
@@ -27,6 +28,7 @@
         public void ConfigureServices( IServiceCollection services )
         {
             services.AddSingleton( Configuration );
+            services.Configure<BackendOptions>( Configuration.GetSection( "Backend" ) );
             services.Configure<StorageContextOptions>( Configuration.GetSection( "StorageContext" ) );
             services.Configure<CookiePolicyOptions>( options =>
                                                      {

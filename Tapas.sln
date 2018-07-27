@@ -31,13 +31,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityFramework", "EntityFr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Core", "src\Tapas.Core\Tapas.Core.csproj", "{318FB6EA-46A4-47A4-B323-8C9621CAFF5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Data.EntityFramework.SqlServer", "src\Tapas.Data.EntityFramework.SqlServer\Tapas.Data.EntityFramework.SqlServer.csproj", "{08193901-1082-4F66-9C99-697C8411CF3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Data.EntityFramework.SqlServer", "src\Tapas.Data.EntityFramework.SqlServer\Tapas.Data.EntityFramework.SqlServer.csproj", "{08193901-1082-4F66-9C99-697C8411CF3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Data.EntityFramework.SQLite", "src\Tapas.Data.EntityFramework.SQLite\Tapas.Data.EntityFramework.SQLite.csproj", "{0DE7DE0C-1F78-4161-A1A5-C85688827138}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Data.EntityFramework.SQLite", "src\Tapas.Data.EntityFramework.SQLite\Tapas.Data.EntityFramework.SQLite.csproj", "{0DE7DE0C-1F78-4161-A1A5-C85688827138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Data.EntityFramework.PostgreSql", "src\Tapas.Data.EntityFramework.PostgreSql\Tapas.Data.EntityFramework.PostgreSql.csproj", "{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Demo.Web.Seeder", "src\Tapas.Demo.Web.Seeder\Tapas.Demo.Web.Seeder.csproj", "{B0DFFF86-4404-4515-A1F3-2263A885BA4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Data.EntityFramework.PostgreSql", "src\Tapas.Data.EntityFramework.PostgreSql\Tapas.Data.EntityFramework.PostgreSql.csproj", "{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,18 +155,6 @@ Global
 		{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}.Release|x64.Build.0 = Release|Any CPU
 		{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}.Release|x86.ActiveCfg = Release|Any CPU
 		{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}.Release|x86.Build.0 = Release|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Debug|x64.Build.0 = Debug|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Debug|x86.Build.0 = Debug|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Release|x64.ActiveCfg = Release|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Release|x64.Build.0 = Release|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Release|x86.ActiveCfg = Release|Any CPU
-		{B0DFFF86-4404-4515-A1F3-2263A885BA4F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
