@@ -1,0 +1,27 @@
+﻿@model Tapas.Authentication.Areas.Authentication.Dto.LoginDto
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form method="post" asp-route-returnUrl="@ViewData[ "ReturnUrl" ]">
+                <div asp-validation-summary="All" class="text-danger" ></div>
+                <div class="form-group" >
+                    <label asp-for="Email" ></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger" ></span>
+                </div>
+                <div class="form-group" >
+                    <label asp-for="Password" ></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger" ></span>
+                </div>
+                <div class="form-group" >
+                    <button type="submit" class="btn btn-default" >Log in</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

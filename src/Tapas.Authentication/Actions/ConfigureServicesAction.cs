@@ -5,8 +5,10 @@
     using ExtCore.Infrastructure.Actions;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Services;
 
     public class ConfigureServicesAction : IConfigureServicesAction
     {
@@ -16,6 +18,10 @@
         {
             var configuration = serviceCollection.BuildServiceProvider()
                                                  .GetService<IConfiguration>();
+
+
+            serviceCollection.AddSingleton<IEmailSender, ConsoleLoggingEmailSender>()
+                ;
             serviceCollection.AddScoped<UserManager<ApplicationUser>, UserManager<ApplicationUser>>();
 //            serviceCollection.AddScoped<SignInManager<ApplicationUser>, SignInManager<ApplicationUser>>();
             serviceCollection.Configure<IdentityOptions>( options =>

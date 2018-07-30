@@ -37,6 +37,7 @@
                                                          options.MinimumSameSitePolicy = SameSiteMode.None;
                                                      } );
             services.AddExtCore( extensionsPath );
+            services.AddRouting( x => x.LowercaseUrls = true );
             services.AddMvc()
                     .SetCompatibilityVersion( CompatibilityVersion.Version_2_1 );
         }
