@@ -2,8 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
-    [ Area( "Backend" ) ]
-    public class HomeController : Controller
+    public class HomeController : BackendControllerBase
     {
         public IActionResult Index()
         {

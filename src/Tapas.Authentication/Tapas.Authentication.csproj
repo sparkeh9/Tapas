@@ -1,8 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <LangVersion>7.3</LangVersion>
+    </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Areas\Authentication\Views\ConfirmEmail\Index.cshtml" />
@@ -208,7 +212,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ExtCore.Mvc.Infrastructure" Version="3.3.0-beta3" />
+    <PackageReference Include="ExtCore.Mvc.Infrastructure" Version="3.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.1.1" />
   </ItemGroup>
 

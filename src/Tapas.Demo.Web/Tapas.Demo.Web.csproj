@@ -4,9 +4,13 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="ExtCore.Mvc" Version="3.3.0-beta3" />
-    <PackageReference Include="ExtCore.WebApplication" Version="3.3.0-beta3" />
+    <PackageReference Include="ExtCore.Mvc" Version="3.3.0" />
+    <PackageReference Include="ExtCore.WebApplication" Version="3.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
