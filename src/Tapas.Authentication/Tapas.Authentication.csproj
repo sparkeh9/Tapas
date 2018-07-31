@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Areas\Authentication\Views\ConfirmEmail\Index.cshtml" />
     <None Remove="Areas\Authentication\Views\Register\Index.cshtml" />
     <None Remove="Areas\Authentication\Views\Login\Index.cshtml" />
     <None Remove="Areas\Authentication\Views\Shared\_Layout.cshtml" />
@@ -47,6 +48,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Areas\Authentication\Views\ConfirmEmail\Index.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </EmbeddedResource>
     <EmbeddedResource Include="Areas\Authentication\Views\Register\Index.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
