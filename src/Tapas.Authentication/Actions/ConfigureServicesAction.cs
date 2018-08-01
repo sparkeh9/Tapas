@@ -47,7 +47,7 @@
                                                           {
                                                               options.LoginPath = "/user/login";
                                                               options.LogoutPath = "/user/logout";
-                                                              options.AccessDeniedPath = "/user/access-denied";
+                                                              options.AccessDeniedPath = "/authentication/access-denied";
                                                               options.SlidingExpiration = true;
                                                               options.Cookie = new CookieBuilder
                                                               {

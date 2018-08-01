@@ -5,10 +5,12 @@
     using Data.EntityFramework;
     using ExtCore.Data.EntityFramework;
     using ExtCore.WebApplication.Extensions;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Authorization;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -38,7 +40,14 @@
                                                      } );
             services.AddExtCore( extensionsPath );
             services.AddRouting( x => x.LowercaseUrls = true );
-            services.AddMvc()
+            services.AddMvc( options =>
+                             {
+                                 var policy = new AuthorizationPolicyBuilder()
+                                              .RequireAuthenticatedUser()
+                                              .Build();
+
+                                 options.Filters.Add( new AuthorizeFilter( policy ) );
+                             })
                     .SetCompatibilityVersion( CompatibilityVersion.Version_2_1 );
         }
 

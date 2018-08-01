@@ -5,11 +5,12 @@ namespace Tapas.Authentication.Areas.Authentication.Controllers
     using System.Threading.Tasks;
     using Data.EntityFramework.Entities;
     using Dto;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.Logging;
 
-    [ Area( "Authentication" ) ]
-    public class LoginController : Controller
+    [ AllowAnonymous ]
+    public class LoginController : AuthenticationBaseController
     {
         private readonly ILogger<LoginController> logger;
         private readonly SignInManager<ApplicationUser> signInManager;

@@ -1,9 +1,11 @@
 ﻿namespace Tapas.Core.Actions
 {
     using System;
+    using System.Linq;
     using ExtCore.Infrastructure.Actions;
     using Microsoft.Extensions.DependencyInjection;
     using Security;
+    using Security.Policy;
 
     public class AddAuthorisationAction : IConfigureServicesAction
     {
@@ -13,9 +15,9 @@
         {
             serviceCollection.AddAuthorization( options =>
                                                 {
-                                                    foreach ( var authorizationPolicyProvider in ExtCore.Infrastructure.ExtensionManager.GetInstances<IAuthorisationPolicyProvider>() )
+                                                    foreach ( var policy in ExtCore.Infrastructure.ExtensionManager.GetInstances<IModuleAuthorisationPolicyFactory>().SelectMany( x => x.GetPolicies() ) )
                                                     {
-                                                        options.AddPolicy( authorizationPolicyProvider.Name, authorizationPolicyProvider.GetAuthorisationPolicy() );
+                                                        options.AddPolicy( policy.Name, policy.Policy );
                                                     }
                                                 }
                                               );

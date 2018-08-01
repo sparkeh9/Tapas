@@ -1,17 +1,16 @@
 ﻿namespace Tapas.Authentication.Areas.Authentication.Controllers
 {
     using System;
-    using System.Text.Encodings.Web;
     using System.Threading.Tasks;
     using Data.EntityFramework.Entities;
-    using Dto;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
-    [ Area( "Authentication" ) ]
-    public class ConfirmEmailController : Controller
+    [ AllowAnonymous ]
+    public class ConfirmEmailController : AuthenticationBaseController
     {
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;

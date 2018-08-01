@@ -1,10 +1,10 @@
-﻿namespace Tapas.Core.Security
+﻿namespace Tapas.Core.Security.Policy
 {
     using Microsoft.AspNetCore.Authorization;
 
     public interface IAuthorisationPolicyProvider
     {
         string Name { get; }
-        AuthorizationPolicy GetAuthorisationPolicy();
+        AuthorizationPolicy Policy { get; }
     }
 }

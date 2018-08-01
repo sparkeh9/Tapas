@@ -4,6 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
 
     [ Area( "Backend" ) ]
-    [ Authorize ]
-    public class BackendControllerBase: Controller {}
+    [ Authorize( Policy = "Backend:AccessBackend" ) ]
+    public class BackendControllerBase : Controller { }
 }
