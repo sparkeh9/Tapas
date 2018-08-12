@@ -11,13 +11,13 @@
         ///     Menu item is decorated with either Microsoft.AspNetCore.Authorization.AuthorizeAttribute with Policy
         ///     or Infrastructure.Attributes.PermissionRequirementAttribute.
         /// </summary>
-        private readonly List<string> allRequiredPermissionIdentifiers = new List<string>();
+        public List<string> AllPolicies { get; private set; }= new List<string>();
 
         /// <summary>
         ///     If not empty, any of these roles is required (access granted if a single role is possessed by current user).
-        ///     Menu item is decorated with Microsoft.AspNetCore.Authorization.AuthorizeAttribute with Roles.
+        ///     Me  nu item is decorated with Microsoft.AspNetCore.Authorization.AuthorizeAttribute with Roles.
         /// </summary>
-        private readonly List<string> anyRequiredRoles = new List<string>();
+        public List<string> AnyRoles { get; private set; } = new List<string>();
 
         public string Name { get; }
         public string DisplayText { get; }
@@ -40,12 +40,12 @@
                 {
                     if ( !string.IsNullOrWhiteSpace( attr.Roles ) )
                     {
-                        anyRequiredRoles.AddRange( attr.Roles.Split( ',' ) );
+                        AnyRoles.AddRange( attr.Roles.Split( ',' ) );
                     }
 
                     if ( !string.IsNullOrWhiteSpace( attr.Policy ) )
                     {
-                        allRequiredPermissionIdentifiers.Add( attr.Policy );
+                        AllPolicies.Add( attr.Policy );
                     }
                 }
             }

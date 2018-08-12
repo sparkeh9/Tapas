@@ -1,0 +1,14 @@
+﻿@model Tapas.Backend.Core.Areas.Backend.ViewModels.Menu.MenuGroupViewModel
+
+<li>
+    <a href="">
+        <i class="@(Model.CssClass)"></i> @(Model.DisplayText)
+        <i class="fa arrow"></i>
+    </a>
+    <ul class="sidebar-nav" >
+        @foreach (var menuItem in Model.MenuItems)
+        {
+            @await Html.PartialAsync("Components/Menu/_MenuItem", menuItem)
+        }
+    </ul>
+</li>
