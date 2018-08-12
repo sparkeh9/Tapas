@@ -4,26 +4,27 @@
 @functions
 {
 
-    bool IsActive(IEnumerable<MenuItemViewModel> menuItems)
+    bool IsActive( IEnumerable<MenuItemViewModel> menuItems )
     {
-        var currentUri = new Uri(Context.Request.Path, UriKind.Relative);
+        var currentUri = new Uri( Context.Request.Path, UriKind.Relative );
         return menuItems.Any( x =>
-        {
-            int compareResult = Uri.Compare( currentUri, new Uri( x.Url, UriKind.Relative ), UriComponents.Path, UriFormat.SafeUnescaped, StringComparison.OrdinalIgnoreCase );
-            return compareResult == 0;
-        } );
+                              {
+                                  int compareResult = Uri.Compare( currentUri, new Uri( x.Url, UriKind.Relative ), UriComponents.Path, UriFormat.SafeUnescaped, StringComparison.OrdinalIgnoreCase );
+                                  return compareResult == 0;
+                              } );
     }
+
 }
 
-<li class="@(IsActive(Model.MenuItems) ? "active open" : string.Empty)">
-    <a href="">
-        <i class="@(Model.CssClass)"></i> @(Model.DisplayText)
-        <i class="fa arrow"></i>
+<li class="@( IsActive( Model.MenuItems ) ? "active open" : string.Empty )" >
+    <a href="" >
+        <i class="@( Model.CssClass )" ></i> @( Model.DisplayText )
+        <i class="arrow fa" ></i>
     </a>
     <ul class="sidebar-nav" >
-        @foreach (var menuItem in Model.MenuItems)
+        @foreach ( var menuItem in Model.MenuItems )
         {
-            @await Html.PartialAsync("Components/Menu/_MenuItem", menuItem)
+            @await Html.PartialAsync( "Components/Menu/_MenuItem", menuItem )
         }
     </ul>
 </li>

@@ -1,5 +1,43 @@
-﻿@{
+﻿@model Tapas.Backend.UserManagement.Areas.Backend.ViewModels.ListUsersViewModel
+@{
     ViewData["Title"] = "User Administration";
 }
+<div class="title-block">
+    <h1 class="title">Users</h1>
+</div>
 
-<h1>User Administration</h1>
+<section class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <section class="example">
+                        <div class="table-flip-scroll">
+                            <table class="table table-striped table-bordered table-hover flip-content">
+                                <thead class="flip-header">
+                                    <tr>
+                                        <th>Username</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ( var thing in Model.Users )
+                                    {
+                                        <tr>
+                                            <td>@thing.Username</td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
