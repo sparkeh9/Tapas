@@ -16,7 +16,6 @@
 
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
-//            serviceCollection.AddHttpContextAccessor();
             serviceCollection.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             serviceCollection.AddScoped<IUrlHelper>( x =>
                                                      {

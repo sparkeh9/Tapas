@@ -1,5 +1,18 @@
-﻿@model Tapas.Backend.Core.Areas.Backend.ViewModels.Menu.MenuItemViewModel
-<li>
+﻿@using Tapas.Backend.Core.Areas.Backend.ViewModels.Menu
+@model Tapas.Backend.Core.Areas.Backend.ViewModels.Menu.MenuItemViewModel
+@functions
+{
+
+    bool IsActive(string url)
+    {
+        var currentUri = new Uri(Context.Request.Path, UriKind.Relative);
+        var menuItemUri = new Uri(url, UriKind.Relative);
+
+        int compareResult = Uri.Compare( currentUri, menuItemUri, UriComponents.Path, UriFormat.SafeUnescaped, StringComparison.OrdinalIgnoreCase );
+        return compareResult == 0;
+    }
+}
+<li class="@(IsActive(Model.Url) ? "active open": string.Empty)">
     <a href="@Model.Url" >
         <i class="@(Model.CssClass)" ></i> @Model.DisplayText
     </a>
