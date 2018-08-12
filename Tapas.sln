@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Data.EntityFramework.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Data.EntityFramework.PostgreSql", "src\Tapas.Data.EntityFramework.PostgreSql\Tapas.Data.EntityFramework.PostgreSql.csproj", "{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Backend.UserManagement", "src\Tapas.Backend.UserManagement\Tapas.Backend.UserManagement.csproj", "{AAE7F959-34EC-4DBF-A996-B68A28FA3833}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,6 +157,18 @@ Global
 		{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}.Release|x64.Build.0 = Release|Any CPU
 		{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}.Release|x86.ActiveCfg = Release|Any CPU
 		{29234CAB-2E3A-4BD2-B4F4-36A5F304F193}.Release|x86.Build.0 = Release|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Debug|x64.Build.0 = Debug|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Debug|x86.Build.0 = Debug|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Release|x64.ActiveCfg = Release|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Release|x64.Build.0 = Release|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Release|x86.ActiveCfg = Release|Any CPU
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,6 +184,7 @@ Global
 		{08193901-1082-4F66-9C99-697C8411CF3B} = {DF6540B5-84BB-4D98-8C5D-9F17FEAA0DF5}
 		{0DE7DE0C-1F78-4161-A1A5-C85688827138} = {DF6540B5-84BB-4D98-8C5D-9F17FEAA0DF5}
 		{29234CAB-2E3A-4BD2-B4F4-36A5F304F193} = {DF6540B5-84BB-4D98-8C5D-9F17FEAA0DF5}
+		{AAE7F959-34EC-4DBF-A996-B68A28FA3833} = {D3F66F06-C2B8-4EB8-A433-854A33905015}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09CE6689-D73B-4AA1-BEF9-695B009B99FB}

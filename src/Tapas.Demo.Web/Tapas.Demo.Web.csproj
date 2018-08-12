@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Tapas.Authentication\Tapas.Authentication.csproj" />
     <ProjectReference Include="..\Tapas.Backend.Core\Tapas.Backend.Core.csproj" />
+    <ProjectReference Include="..\Tapas.Backend.UserManagement\Tapas.Backend.UserManagement.csproj" />
     <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
     <ProjectReference Include="..\Tapas.Data.EntityFramework.MySQL\Tapas.Data.EntityFramework.MySQL.csproj" />
   </ItemGroup>

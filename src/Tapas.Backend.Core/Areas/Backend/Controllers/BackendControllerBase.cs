@@ -5,5 +5,5 @@
 
     [ Area( "Backend" ) ]
     [ Authorize( Policy = "Backend:AccessBackend" ) ]
-    public class BackendControllerBase : Controller { }
+    public abstract class BackendControllerBase : Controller { }
 }

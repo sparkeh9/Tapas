@@ -17,40 +17,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="wwwroot.backend\css\app-blue.css" />
-      <None Remove="wwwroot.backend\css\app-custom.css" />
-      <None Remove="wwwroot.backend\css\app-green.css" />
-      <None Remove="wwwroot.backend\css\app-orange.css" />
-      <None Remove="wwwroot.backend\css\app-purple.css" />
-      <None Remove="wwwroot.backend\css\app-red.css" />
-      <None Remove="wwwroot.backend\css\app-seagreen.css" />
-      <None Remove="wwwroot.backend\css\app.css" />
-      <None Remove="wwwroot.backend\css\vendor.css" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.eot" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.ttf" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.woff" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.woff2" />
-      <None Remove="wwwroot.backend\fonts\FontAwesome.otf" />
-      <None Remove="wwwroot.backend\js\app.js" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Include="wwwroot.backend\css\app-blue.css" />
-      <EmbeddedResource Include="wwwroot.backend\css\app-custom.css" />
-      <EmbeddedResource Include="wwwroot.backend\css\app-green.css" />
-      <EmbeddedResource Include="wwwroot.backend\css\app-orange.css" />
-      <EmbeddedResource Include="wwwroot.backend\css\app-purple.css" />
-      <EmbeddedResource Include="wwwroot.backend\css\app-red.css" />
-      <EmbeddedResource Include="wwwroot.backend\css\app-seagreen.css" />
-      <EmbeddedResource Include="wwwroot.backend\css\app.css" />
-      <EmbeddedResource Include="wwwroot.backend\css\vendor.css" />
-      <EmbeddedResource Include="wwwroot.backend\fonts\fontawesome-webfont.eot" />
-      <EmbeddedResource Include="wwwroot.backend\fonts\fontawesome-webfont.svg" />
-      <EmbeddedResource Include="wwwroot.backend\fonts\fontawesome-webfont.ttf" />
-      <EmbeddedResource Include="wwwroot.backend\fonts\fontawesome-webfont.woff" />
-      <EmbeddedResource Include="wwwroot.backend\fonts\fontawesome-webfont.woff2" />
-      <EmbeddedResource Include="wwwroot.backend\fonts\FontAwesome.otf" />
-      <EmbeddedResource Include="wwwroot.backend\js\app.js" />
+      <EmbeddedResource Include="**\*.css" />
+      <EmbeddedResource Include="**\*.js" />
+      <EmbeddedResource Include="**\*.eot" />
+      <EmbeddedResource Include="**\*.svg" />
+      <EmbeddedResource Include="**\*.ttf" />
+      <EmbeddedResource Include="**\*.woff" />
+      <EmbeddedResource Include="**\*.woff2" />
     </ItemGroup>
 
     <ItemGroup>
