@@ -5,6 +5,7 @@
     using Data.EntityFramework;
     using ExtCore.Data.EntityFramework;
     using ExtCore.WebApplication.Extensions;
+    using FluentValidation.AspNetCore;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -44,11 +45,12 @@
                              {
                                  var policy = new AuthorizationPolicyBuilder()
                                               .RequireAuthenticatedUser()
-                                              .Build();
+                                              .Build(); 
 
                                  options.Filters.Add( new AuthorizeFilter( policy ) );
                              })
-                    .SetCompatibilityVersion( CompatibilityVersion.Version_2_1 );
+                    .SetCompatibilityVersion( CompatibilityVersion.Version_2_1 )
+                    .AddFluentValidation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,4 @@
-﻿namespace Tapas.Backend.UserManagement.Areas.Backend.ViewModels
+﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.ListUsers
 {
     using System.Collections.Generic;
 
@@ -8,8 +8,9 @@
 
         public class UserListing
         {
-            public string Username { get; set; }
             public int Id { get; set; }
+            public string Username { get; set; }
+            public string Email { get; set; }
         }
     }
 }

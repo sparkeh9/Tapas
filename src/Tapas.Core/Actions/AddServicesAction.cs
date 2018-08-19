@@ -2,12 +2,15 @@
 {
     using System;
     using System.Linq;
+    using System.Reflection;
+    using AutoMapper;
     using ExtCore.Infrastructure;
     using ExtCore.Infrastructure.Actions;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Infrastructure;
     using Microsoft.AspNetCore.Mvc.Routing;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.DependencyModel;
     using Security.Policy;
 
     public class AddServicesAction : IConfigureServicesAction
@@ -30,6 +33,29 @@
                                                     }
                                                 }
                                               );
+
+            var assembliesToExclude = new[]
+            {
+                "System",
+                "Microsoft",
+                "ExtCore",
+                "AutoMapper",
+                "runtime",
+                "Newtonsoft",
+                "Remotion",
+                "FluentValidation",
+                "MySql",
+                "NETStandard.Library",
+                "NuGet.Frameworks",
+                "Pomelo"
+            };
+            var dependencyContext = DependencyContext.Default;
+            var assemblies = dependencyContext.RuntimeLibraries
+                                              .Where( lib => assembliesToExclude.All( x => !lib.Name.StartsWith( x ) ) )
+                                              .SelectMany( lib => lib.GetDefaultAssemblyNames( dependencyContext )
+                                                                     .Select( Assembly.Load ) )
+                                              .ToList();
+            serviceCollection.AddAutoMapper( assemblies );
         }
     }
 }

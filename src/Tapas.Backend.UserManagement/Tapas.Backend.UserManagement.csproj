@@ -10,6 +10,8 @@
 
     <ItemGroup>
         <PackageReference Include="ExtCore.Mvc.Infrastructure" Version="3.3.0" />
+        <PackageReference Include="FluentValidation" Version="8.0.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -28,6 +30,7 @@
 
     <ItemGroup>
       <None Remove="Areas\Backend\Views\Users\Index.cshtml" />
+      <None Remove="Areas\Backend\Views\Users\New.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

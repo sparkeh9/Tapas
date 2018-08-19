@@ -3,15 +3,9 @@
 
 @functions
 {
-
     bool IsActive( IEnumerable<MenuItemViewModel> menuItems )
     {
-        var currentUri = new Uri( Context.Request.Path, UriKind.Relative );
-        return menuItems.Any( x =>
-                              {
-                                  int compareResult = Uri.Compare( currentUri, new Uri( x.Url, UriKind.Relative ), UriComponents.Path, UriFormat.SafeUnescaped, StringComparison.OrdinalIgnoreCase );
-                                  return compareResult == 0;
-                              } );
+        return menuItems.Any( x => Context.Request.Path.ToString().Contains( x.Url ) );
     }
 
 }
