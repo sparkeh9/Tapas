@@ -2,70 +2,71 @@
 @{
     ViewData[ "Title" ] = "Manage Users";
 }
-
-<div class="items-list-page">
-    <div class="title-search-block">
-        <div class="title-block">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3 class="title">
-                        Users
-                        <a asp-action="New" class="btn btn-primary btn-sm rounded-s">Add New</a>
-                    </h3>
+<article class="content" >
+    <div class="items-list-page" >
+        <div class="title-search-block" >
+            <div class="title-block" >
+                <div class="row" >
+                    <div class="col-md-6" >
+                        <h3 class="title" >
+                            Users
+                            <a asp-action="New" class="btn btn-primary btn-sm rounded-s" >Add New</a>
+                        </h3>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="items-search">
-            <form class="form-inline">
-                <div class="input-group">
-                    <input class="boxed form-control rounded-s" placeholder="Username..." type="text">
-                    <span class="input-group-btn">
-                        <button class="btn btn-secondary rounded-s" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </form>
+            <div class="items-search" >
+                <form class="form-inline" >
+                    <div class="input-group" >
+                        <input class="boxed form-control rounded-s" placeholder="Username..." type="text" >
+                        <span class="input-group-btn" >
+                            <button class="btn btn-secondary rounded-s" type="button" >
+                                <i class="fa fa-search" ></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<section class="section" >
-    <div class="row" >
-        <div class="col-md-12" >
-            <div class="card" >
-                <div class="card-block" >
-                    <div class="card-title-block" >
-                        <section class="example" >
-                            <div class="table-flip-scroll" >
-                                <table class="flip-content table table-bordered table-hover table-striped" >
-                                    <thead class="flip-header" >
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @foreach ( var user in Model.Users )
-                                        {
+    <section class="section" >
+        <div class="row" >
+            <div class="col-md-12" >
+                <div class="card" >
+                    <div class="card-block" >
+                        <div class="card-title-block" >
+                            <section class="example" >
+                                <div class="table-flip-scroll" >
+                                    <table class="flip-content table table-bordered table-hover table-striped" >
+                                        <thead class="flip-header" >
                                             <tr>
-                                                <td>@user.Id</td>
-                                                <td>
-                                                    <a asp-controller="Users" asp-action="Edit" asp-area="Backend" asp-route-id="@user.Id"/>
-                                                    @user.Username
-                                                </td>
-                                                <td>@user.Email</td>
+                                                <th>Id</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
                                             </tr>
-                                        }
+                                        </thead>
+                                        <tbody>
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </section>
+                                            @foreach ( var user in Model.Users )
+                                            {
+                                                <tr>
+                                                    <td>@user.Id</td>
+                                                    <td>
+                                                        <a asp-controller="Users" asp-action="Edit" asp-area="Backend" asp-route-id="@user.Id" />
+                                                        @user.Username
+                                                    </td>
+                                                    <td>@user.Email</td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</article>
