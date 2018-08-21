@@ -1,0 +1,68 @@
+﻿@using Tapas.Backend.Core.ExtensionMethods
+@model Tapas.Backend.UserManagement.Areas.Backend.Models.EditUser.EditUserViewModel
+@{
+    ViewData[ "Title" ] = "Edit User";
+}
+
+<article class="content forms-page" >
+    <div class="title-block" >
+        <h3 class="title" >Edit a user</h3>
+    </div>
+    <form autocomplete="off" method="post" role="form" >
+        <section class="section" >
+
+            <div class="row sameheight-container" >
+                <div class="col-md-6" >
+                    <div class="card card-block sameheight-item" >
+                        <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Username ) )" >
+                            <label class="control-label" >Username:</label>
+                            <input asp-for="Username " class="form-control underlined" data-lpignore="true" />
+                            <span asp-validation-for="Username " class="has-error" ></span>
+                        </div>
+                        <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Name ) )" >
+                            <label class="control-label" >Name:</label>
+                            <input asp-for="Name " class="form-control underlined" data-lpignore="true" />
+                            <span asp-validation-for="Name " class="has-error" ></span>
+                        </div>
+                        <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Email ) )" >
+                            <label class="control-label" >Email:</label>
+                            <input asp-for="Email " class="form-control underlined" data-lpignore="true" />
+                            <span asp-validation-for="Email " class="has-error" ></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" >
+                    <div class="card card-block sameheight-item" >
+                        <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Roles ) )" >
+                            <label class="title-block" >Roles</label>
+                            @foreach ( var role in Model.AllRoles )
+                            {
+                                <div>
+                                    <label>
+                                        <input name="roles" class="checkbox" type="checkbox" value="@role.Value" checked="@( Model.Roles?.Any( x => x == role.Value ) ?? false ? "checked" : null )" >
+                                        <span>
+                                            @role.Value
+                                        </span>
+                                    </label>
+                                </div>
+                            }
+                            <span asp-validation-for="Roles " class="has-error" ></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" >
+            <div class="row sameheight-container" >
+                <div class="col-md-12" >
+                    <div>
+                        <div class="form-group pull-right" >
+                            <button class="btn btn-primary" type="submit" >Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</article>

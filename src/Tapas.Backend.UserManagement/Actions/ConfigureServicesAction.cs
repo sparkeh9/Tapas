@@ -2,6 +2,7 @@
 {
     using System;
     using Areas.Backend.Models.CreateUser;
+    using Areas.Backend.Models.EditUser;
     using ExtCore.Infrastructure.Actions;
     using FluentValidation;
     using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
             serviceCollection.AddTransient<IValidator<CreateUserDto>, CreateUserDtoValidator>();
+            serviceCollection.AddTransient<IValidator<EditUserDto>, EditUserDtoValidator>();
         }
     }
 }

@@ -29,8 +29,21 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Remove="Areas\Backend\Views\_ViewImports.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Areas\Backend\Views\Users\Edit.cshtml" />
       <None Remove="Areas\Backend\Views\Users\Index.cshtml" />
       <None Remove="Areas\Backend\Views\Users\New.cshtml" />
+      <None Remove="Areas\Backend\Views\_ViewImports.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Areas\Backend\Views\_ViewImports.cshtml">
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <Pack>$(IncludeRazorContentInPack)</Pack>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>

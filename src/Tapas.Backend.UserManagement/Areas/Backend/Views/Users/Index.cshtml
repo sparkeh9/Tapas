@@ -47,12 +47,15 @@
                                     </thead>
                                     <tbody>
 
-                                        @foreach ( var thing in Model.Users )
+                                        @foreach ( var user in Model.Users )
                                         {
                                             <tr>
-                                                <td>@thing.Id</td>
-                                                <td>@thing.Username</td>
-                                                <td>@thing.Email</td>
+                                                <td>@user.Id</td>
+                                                <td>
+                                                    <a asp-controller="Users" asp-action="Edit" asp-area="Backend" asp-route-id="@user.Id"/>
+                                                    @user.Username
+                                                </td>
+                                                <td>@user.Email</td>
                                             </tr>
                                         }
 
