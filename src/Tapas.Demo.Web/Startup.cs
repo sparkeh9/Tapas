@@ -19,10 +19,12 @@
     public class Startup
     {
         private readonly string extensionsPath;
+        private readonly IHostingEnvironment hostingEnvironment;
         public IConfiguration Configuration { get; }
 
         public Startup( IConfiguration configuration, IHostingEnvironment hostingEnvironment )
         {
+            this.hostingEnvironment = hostingEnvironment;
             Configuration = configuration;
             extensionsPath = hostingEnvironment.ContentRootPath + configuration[ "Extensions:Path" ];
         }
@@ -31,6 +33,7 @@
         public void ConfigureServices( IServiceCollection services )
         {
             services.AddSingleton( Configuration );
+            services.AddSingleton( hostingEnvironment );
             services.Configure<BackendOptions>( Configuration.GetSection( "Backend" ) );
             services.Configure<StorageContextOptions>( Configuration.GetSection( "StorageContext" ) );
             services.Configure<CookiePolicyOptions>( options =>
@@ -45,10 +48,10 @@
                              {
                                  var policy = new AuthorizationPolicyBuilder()
                                               .RequireAuthenticatedUser()
-                                              .Build(); 
+                                              .Build();
 
                                  options.Filters.Add( new AuthorizeFilter( policy ) );
-                             })
+                             } )
                     .SetCompatibilityVersion( CompatibilityVersion.Version_2_1 )
                     .AddFluentValidation();
         }

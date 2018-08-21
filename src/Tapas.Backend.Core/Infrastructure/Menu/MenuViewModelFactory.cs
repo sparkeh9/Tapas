@@ -72,6 +72,9 @@
 
         private async Task<bool> ShouldAddMenuItemAsync( MenuItem menuItem )
         {
+            if ( principal.IsInRole( "SuperAdmin") )
+                return true;
+
             bool matchedAllPolicies;
             bool matchedAnyRole;
 

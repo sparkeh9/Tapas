@@ -3,7 +3,9 @@
     using System;
     using ExtCore.Infrastructure.Actions;
     using Infrastructure.Menu;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.Extensions.DependencyInjection;
+    using Security;
 
     public class ConfigureServicesAction : IConfigureServicesAction
     {
@@ -12,6 +14,7 @@
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
             serviceCollection.AddScoped<MenuViewModelFactory>();
+            serviceCollection.AddSingleton<IAuthorizationHandler, ClaimOrSuperAdminHandler>();
         }
     }
 }

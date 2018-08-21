@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace Tapas.Authentication.Areas.Authentication.Controllers
+﻿namespace Tapas.Authentication.Areas.Authentication.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using Data.EntityFramework.Entities;
     using Dto;
@@ -22,7 +21,7 @@ namespace Tapas.Authentication.Areas.Authentication.Controllers
         }
 
         [ HttpGet ]
-        public IActionResult Index(string returnUrl = null)
+        public IActionResult Index( string returnUrl = null )
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -31,7 +30,7 @@ namespace Tapas.Authentication.Areas.Authentication.Controllers
         [ HttpPost ]
         public async Task<IActionResult> Index( LoginDto loginDto, string returnUrl = null )
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl = returnUrl ?? Url.Content( "~/" );
             ViewBag.ReturnUrl = returnUrl;
 
             if ( ModelState.IsValid )

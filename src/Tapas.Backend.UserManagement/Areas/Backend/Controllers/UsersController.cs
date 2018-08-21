@@ -12,7 +12,7 @@
     using Models.CreateUser;
     using Models.ListUsers;
 
-    [ Authorize( Policy = "Backend:Users:Manage" ) ]
+    [ Authorize( Policy = "Backend:Users:Manage") ]
     public class UsersController : BackendControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
