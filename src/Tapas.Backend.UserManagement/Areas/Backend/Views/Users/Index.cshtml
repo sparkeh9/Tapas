@@ -2,6 +2,22 @@
 @{
     ViewData[ "Title" ] = "Manage Users";
 }
+
+@functions
+{
+
+    int GetPreviousPage( int current )
+    {
+        return current <= 1 ? current : current - 1;
+    }
+
+    int GetNextPage( int current, int maximum )
+    {
+        return current == maximum ? current : current + 1;
+    }
+
+}
+
 <article class="content" >
     <div class="items-list-page" >
         <div class="title-search-block" >
@@ -18,9 +34,9 @@
             <div class="items-search" >
                 <form class="form-inline" >
                     <div class="input-group" >
-                        <input class="boxed form-control rounded-s" placeholder="Username..." type="text" >
+                        <input class="boxed form-control rounded-s" name="query" placeholder="Username..." type="text" value="@Model.Query" >
                         <span class="input-group-btn" >
-                            <button class="btn btn-secondary rounded-s" type="button" >
+                            <button class="btn btn-secondary rounded-s" type="submit" >
                                 <i class="fa fa-search" ></i>
                             </button>
                         </span>
@@ -69,4 +85,28 @@
             </div>
         </div>
     </section>
+
+
+    @if ( Model.MaxPages > 1 )
+    {
+        <nav class="text-right" >
+            <ul class="pagination" >
+                <li class="page-item" >
+                    <a href="@Url.Action( "Index", new { Model.Query, page = GetPreviousPage( Model.Page ) } )" class="page-link" >Next</a>
+                </li>
+
+                @for ( int i = 0; i < Model.MaxPages; i++ )
+                {
+                    <li class="page-item @( Model.Page == i + 1 ? "active" : string.Empty )" >
+                        <a href="@Url.Action( "Index", new { Model.Query, page = i + 1 } )" class="page-link" >@( i + 1 )</a>
+                    </li>
+                }
+
+                <li class="page-item" >
+                    <a href="@Url.Action( "Index", new { Model.Query, page = GetNextPage( Model.Page, Model.MaxPages ) } )" class="page-link" >Next</a>
+                </li>
+            </ul>
+        </nav>
+    }
+
 </article>

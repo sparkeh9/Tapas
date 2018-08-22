@@ -1,7 +1,10 @@
 ﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
+    using System.Security.Claims;
     using System.Threading.Tasks;
     using AutoMapper;
     using Core.Areas.Backend.Controllers;
@@ -13,25 +16,45 @@
     using Models.CreateUser;
     using Models.EditUser;
     using Models.ListUsers;
+    using Tapas.Core.ExtensionMethods;
 
     [ Authorize( Policy = "Backend:Users:Manage" ) ]
     public class UsersController : BackendControllerBase
     {
+        private readonly Dictionary<string, string> claimTypes;
         private readonly IMapper mapper;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
+        private int RowsPerPage;
 
         public UsersController( UserManager<ApplicationUser> userManager, IMapper mapper, RoleManager<ApplicationRole> roleManager )
         {
             this.userManager = userManager;
             this.mapper = mapper;
             this.roleManager = roleManager;
+
+            var fieldInfo = typeof( ClaimTypes ).GetFields( BindingFlags.Static | BindingFlags.Public );
+            claimTypes = fieldInfo.ToDictionary( i => i.Name, i => (string) i.GetValue( null ) );
         }
 
         [ HttpGet ]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( int page = 1, string query = null )
         {
-            var users = await userManager.Users.Select( u => new ListUsersViewModel.UserListing
+            RowsPerPage = 10;
+
+            int maxRows = await userManager.Users
+                                           .Where( user => query.IsNullOrWhiteSpace() || user.Email.Contains( query ) ||
+                                                           query.IsNullOrWhiteSpace() || user.UserName.Contains( query ) )
+                                           .CountAsync();
+
+
+            int rowsToSkip = RowsPerPage * ( page - 1 ).MinimumValue();
+            var usersQuery = userManager.Users.Where( user => query.IsNullOrWhiteSpace() || user.Email.Contains( query ) ||
+                                                              query.IsNullOrWhiteSpace() || user.UserName.Contains( query ) )
+                                        .Skip( rowsToSkip )
+                                        .Take( RowsPerPage );
+
+            var users = await usersQuery.Select( u => new ListUsersViewModel.UserListing
             {
                 Id = u.Id,
                 Username = u.UserName,
@@ -40,6 +63,11 @@
 
             return View( new ListUsersViewModel
             {
+                Page = page.MinimumValue( 1 ),
+                MaxPages = ( (int) Math.Ceiling( maxRows / (double) RowsPerPage ) ).MinimumValue( 1 ),
+                RowsPerPage = RowsPerPage,
+                MaxRows = maxRows,
+                Query = query,
                 Users = users
             } );
         }
@@ -86,7 +114,7 @@
             }
 
             var viewModel = mapper.Map<EditUserViewModel>( user );
-            await PopulateRoles(user , viewModel );
+            await PopulateRoles( user, viewModel );
 
             return View( viewModel );
         }
@@ -101,15 +129,37 @@
                 return NotFound();
             }
 
+            var userRoles = await userManager.GetRolesAsync( user );
+//            var userClaims = await userManager.GetClaimsAsync( user );
+
+            foreach ( string role in request.Roles.Except( userRoles ) )
+            {
+                await userManager.AddToRoleAsync( user, role );
+            }
+
+            foreach ( string role in userRoles.Except( request.Roles ) )
+            {
+                await userManager.RemoveFromRoleAsync( user, role );
+            }
+
+//            foreach (var kvp in request.Claims.Where(a => !userClaims.Any(b => claimTypes[a.Key] == b.Type && a.Value == b.Value)))
+//            {
+//                await userManager.AddClaimAsync( user, new Claim( claimTypes[ kvp.Key ], kvp.Value ) );
+//            }
+//
+//            foreach (var claim in userClaims.Where(a => !request.Claims.Any(b => a.Type == claimTypes[b.Key] && a.Value == b.Value)))
+//            {
+//                await userManager.RemoveClaimAsync( user, claim );
+//            }
+
             var viewModel = mapper.Map<EditUserViewModel>( request );
-            await PopulateRoles(user, viewModel );
+            await PopulateRoles( user, viewModel );
             return View( viewModel );
         }
 
-
         private async Task PopulateRoles( ApplicationUser user, EditUserViewModel viewModel )
         {
-            viewModel.Roles = await userManager.GetRolesAsync(user);
+            viewModel.Roles = await userManager.GetRolesAsync( user );
             viewModel.AllRoles = await roleManager.Roles.ToDictionaryAsync( x => x.Id.ToString(), x => x.Name );
         }
 
@@ -132,7 +182,6 @@
                         return string.Empty;
                 }
             }
-
 
             foreach ( var error in result.Errors )
             {

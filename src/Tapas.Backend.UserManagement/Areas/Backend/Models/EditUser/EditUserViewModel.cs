@@ -8,8 +8,7 @@
         public string Email { get; set; }
         public string Name { get; set; }
         public IEnumerable<string> Roles { get; set; }
-        public Dictionary<string, string> Claims { get; set; }
-
-        public Dictionary<string, string> AllRoles { get; set; }
+        public Dictionary<string, string> AllRoles { set; get; }
+        //        public Dictionary<string, string> Claims { get; set; }
     }
 }

@@ -4,6 +4,12 @@
 
     public class ListUsersViewModel
     {
+        public string Query { get; set; }
+        public int MaxPages { get; set; }
+        public int MaxRows { get; set; }
+        public int Page { get; set; }
+        public int RowsPerPage { get; set; }
+
         public List<UserListing> Users { get; set; }
 
         public class UserListing
