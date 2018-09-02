@@ -2,6 +2,7 @@
 {
     public static class Permissions
     {
-        public const string Manage = nameof( Manage );
+        public const string ManageUsers = nameof( ManageUsers );
+        public const string ManageRoles = nameof(ManageRoles);
     }
 }

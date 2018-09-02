@@ -1,11 +1,10 @@
-﻿@model Tapas.Backend.UserManagement.Areas.Backend.Models.Users.ListUsers.ListUsersViewModel
+﻿@model Tapas.Backend.UserManagement.Areas.Backend.Models.Roles.ListRoles.ListRolesViewModel
 @{
-    ViewData[ "Title" ] = "Manage Users";
+    ViewData[ "Title" ] = "Manage Roles";
 }
 
 @functions
 {
-
     int GetPreviousPage( int current )
     {
         return current <= 1 ? current : current - 1;
@@ -15,7 +14,6 @@
     {
         return current == maximum ? current : current + 1;
     }
-
 }
 
 <article class="content" >
@@ -25,7 +23,7 @@
                 <div class="row" >
                     <div class="col-md-6" >
                         <h3 class="title" >
-                            Users
+                            Roles
                             <a asp-action="New" class="btn btn-primary btn-sm rounded-s" >Add New</a>
                         </h3>
                     </div>
@@ -57,21 +55,19 @@
                                         <thead class="flip-header" >
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Username</th>
-                                                <th>Email</th>
+                                                <th>Role</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            @foreach ( var user in Model.Users )
+                                            @foreach ( var role in Model.Roles )
                                             {
                                                 <tr>
-                                                    <td>@user.Id</td>
+                                                    <td>@role.Id</td>
                                                     <td>
-                                                        <a asp-controller="Users" asp-action="Edit" asp-area="Backend" asp-route-id="@user.Id" />
-                                                        @user.Username
+                                                        <a asp-controller="Roles" asp-action="Edit" asp-area="Backend" asp-route-id="@role.Id" />
+                                                        @role.Name
                                                     </td>
-                                                    <td>@user.Email</td>
                                                 </tr>
                                             }
 

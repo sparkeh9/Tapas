@@ -1,0 +1,5 @@
+﻿@model Tapas.Backend.Core.Infrastructure.Assets.BackendStyleSheetViewModel
+@foreach (var stylesheet in Model.Stylesheets)
+{
+    <link href="@stylesheet.Url" rel="stylesheet" asp-append-version="true">
+}

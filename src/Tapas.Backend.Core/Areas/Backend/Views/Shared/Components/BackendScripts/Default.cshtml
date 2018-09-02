@@ -1,0 +1,5 @@
+﻿@model Tapas.Backend.Core.Infrastructure.Assets.BackendScriptViewModel
+@foreach (var script in Model.Scripts)
+{
+    <script src="@script.Url" asp-append-version="true"></script>
+}

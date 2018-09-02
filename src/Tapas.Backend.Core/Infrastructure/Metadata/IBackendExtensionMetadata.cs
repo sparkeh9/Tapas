@@ -7,8 +7,8 @@
     public interface IBackendExtensionMetadata
     {
         IUrlHelper UrlHelper { get; set; }
-        IEnumerable<StyleSheet> StyleSheets();
-        IEnumerable<Script> Scripts();
+        IEnumerable<BackendStyleSheet> StyleSheets();
+        IEnumerable<BackendScript> Scripts();
         IEnumerable<MenuGroup> MenuGroups();
     }
 }

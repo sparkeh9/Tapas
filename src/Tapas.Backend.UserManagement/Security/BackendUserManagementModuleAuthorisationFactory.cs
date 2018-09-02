@@ -1,14 +1,23 @@
 ﻿namespace Tapas.Backend.UserManagement.Security
 {
     using System.Collections.Generic;
+    using System.Security.Claims;
     using Core.Security;
     using Microsoft.AspNetCore.Authorization;
     using Tapas.Core.ExtensionMethods;
     using Tapas.Core.Security.Policy;
 
-    public class BackendUserManagementModuleAuthorisationPolicyFactory : IModuleAuthorisationPolicyFactory
+    public class BackendUserManagementModuleAuthorisationFactory : IModuleAuthorisationFactory
     {
         private const string ModuleNamespace = "Backend:Users";
+
+        public IEnumerable<Claim> GetClaims()
+        {
+            foreach ( string permission in typeof( Permissions ).GetAllPublicConstantValues<string>() )
+            {
+                yield return new Claim( "Permission", $"{ModuleNamespace}:{permission}" );
+            }
+        }
 
         public IEnumerable<IAuthorisationPolicyProvider> GetPolicies()
         {

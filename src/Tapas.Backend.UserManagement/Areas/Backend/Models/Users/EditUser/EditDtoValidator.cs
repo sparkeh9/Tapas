@@ -1,4 +1,4 @@
-﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.EditUser
+﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.Users.EditUser
 {
     using FluentValidation;
 

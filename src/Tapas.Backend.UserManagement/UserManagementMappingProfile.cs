@@ -1,7 +1,9 @@
 ﻿namespace Tapas.Backend.UserManagement
 {
-    using Areas.Backend.Models.CreateUser;
-    using Areas.Backend.Models.EditUser;
+    using Areas.Backend.Models.Roles.CreateRole;
+    using Areas.Backend.Models.Roles.EditRoles;
+    using Areas.Backend.Models.Users.CreateUser;
+    using Areas.Backend.Models.Users.EditUser;
     using AutoMapper;
     using Data.EntityFramework.Entities;
 
@@ -12,6 +14,10 @@
             CreateMap<CreateUserDto, CreateUserViewModel>().ReverseMap();
             CreateMap<EditUserDto, EditUserViewModel>().ReverseMap();
             CreateMap<ApplicationUser, EditUserViewModel>().ReverseMap();
+
+            CreateMap<CreateRoleDto, CreateRoleViewModel>().ReverseMap();
+            CreateMap<EditUserDto, EditRoleViewModel>().ReverseMap();
+            CreateMap<ApplicationRole, EditRoleViewModel>().ReverseMap();
         }
     }
 }

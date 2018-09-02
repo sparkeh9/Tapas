@@ -1,8 +1,8 @@
-﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.ListUsers
+﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.Roles.ListRoles
 {
     using System.Collections.Generic;
 
-    public class ListUsersViewModel
+    public class ListRolesViewModel
     {
         public string Query { get; set; }
         public int MaxPages { get; set; }
@@ -10,13 +10,12 @@
         public int Page { get; set; }
         public int RowsPerPage { get; set; }
 
-        public List<UserListing> Users { get; set; }
+        public List<RoleListing> Roles { get; set; }
 
-        public class UserListing
+        public class RoleListing
         {
             public int Id { get; set; }
-            public string Username { get; set; }
-            public string Email { get; set; }
+            public string Name { get; set; }
         }
     }
 }

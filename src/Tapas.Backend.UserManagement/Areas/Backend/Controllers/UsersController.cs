@@ -1,10 +1,7 @@
 ﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Controllers
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
-    using System.Security.Claims;
     using System.Threading.Tasks;
     using AutoMapper;
     using Core.Areas.Backend.Controllers;
@@ -13,15 +10,14 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
-    using Models.CreateUser;
-    using Models.EditUser;
-    using Models.ListUsers;
+    using Models.Users.CreateUser;
+    using Models.Users.EditUser;
+    using Models.Users.ListUsers;
     using Tapas.Core.ExtensionMethods;
 
-    [ Authorize( Policy = "Backend:Users:Manage" ) ]
+    [ Authorize( Policy = "Backend:Users:ManageUsers" ) ]
     public class UsersController : BackendControllerBase
     {
-        private readonly Dictionary<string, string> claimTypes;
         private readonly IMapper mapper;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly UserManager<ApplicationUser> userManager;
@@ -32,9 +28,6 @@
             this.userManager = userManager;
             this.mapper = mapper;
             this.roleManager = roleManager;
-
-            var fieldInfo = typeof( ClaimTypes ).GetFields( BindingFlags.Static | BindingFlags.Public );
-            claimTypes = fieldInfo.ToDictionary( i => i.Name, i => (string) i.GetValue( null ) );
         }
 
         [ HttpGet ]
@@ -49,8 +42,9 @@
 
 
             int rowsToSkip = RowsPerPage * ( page - 1 ).MinimumValue();
-            var usersQuery = userManager.Users.Where( user => query.IsNullOrWhiteSpace() || user.Email.Contains( query ) ||
-                                                              query.IsNullOrWhiteSpace() || user.UserName.Contains( query ) )
+            var usersQuery = userManager.Users
+                                        .Where( user => query.IsNullOrWhiteSpace() || user.Email.Contains( query ) ||
+                                                        query.IsNullOrWhiteSpace() || user.UserName.Contains( query ) )
                                         .Skip( rowsToSkip )
                                         .Take( RowsPerPage );
 

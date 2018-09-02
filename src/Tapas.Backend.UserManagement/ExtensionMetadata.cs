@@ -12,14 +12,14 @@
     {
         public IUrlHelper UrlHelper { get; set; }
 
-        public IEnumerable<StyleSheet> StyleSheets()
+        public IEnumerable<BackendStyleSheet> StyleSheets()
         {
-            return Enumerable.Empty<StyleSheet>();
+            return Enumerable.Empty<BackendStyleSheet>();
         }
 
-        public IEnumerable<Script> Scripts()
+        public IEnumerable<BackendScript> Scripts()
         {
-            return Enumerable.Empty<Script>();
+            yield return new BackendScript("~/wwwroot.backend/js/jquery.auto-complete.min.js", 999);
         }
 
         public IEnumerable<MenuGroup> MenuGroups()
@@ -31,7 +31,11 @@
 
             yield return new MenuGroup( "Administration", "Administration", 0, new List<MenuItem>
             {
-                new MenuItem( "ManageUsers", "Manage Users", 999, UrlHelper.Action( "Index", "Users", new { area = "Backend" } ), "fa fa-users", new List<AuthorizeAttribute>
+                new MenuItem( "ManageUsers", "Manage Users", 1, UrlHelper.Action( "Index", "Users", new { area = "Backend" } ), "fa fa-users", new List<AuthorizeAttribute>
+                {
+                    new AuthorizeAttribute( "Backend:Users:Manage" )
+                } ),
+                new MenuItem( "ManageRoles", "Manage Roles", 2, UrlHelper.Action( "Index", "Roles", new { area = "Backend" } ), "fa fa-unlock", new List<AuthorizeAttribute>
                 {
                     new AuthorizeAttribute( "Backend:Users:Manage" )
                 } )

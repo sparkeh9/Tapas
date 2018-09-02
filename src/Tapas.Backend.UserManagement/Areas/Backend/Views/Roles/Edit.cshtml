@@ -1,0 +1,81 @@
+﻿@using Tapas.Backend.Core.ExtensionMethods
+@model Tapas.Backend.UserManagement.Areas.Backend.Models.Roles.EditRoles.EditRoleViewModel
+@{
+    ViewData[ "Title" ] = "Edit Role";
+}
+
+<article class="content" >
+    <div class="title-block" >
+        <h3 class="title" >Edit a Role</h3>
+    </div>
+    <section class="section" >
+        <div class="row sameheight-container" >
+            <div class="col-md-6" >
+                <form autocomplete="off" method="post" role="form" >
+                    <div class="card card-block sameheight-item" >
+                        <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Name ) )" >
+                            <label class="control-label" >Name:</label>
+                            <input asp-for="Name" class="form-control underlined" data-lpignore="true" />
+                            <span asp-validation-for="Name" class="has-error" ></span>
+                        </div>
+                        <div class="form-group pull-right" >
+                            <button class="btn btn-primary" type="submit" >Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6" >
+                <div class="card card-block sameheight-item" >
+                    <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Name ) )" >
+                        <label class="title-block" >Claims</label>
+
+                        <div class="table-flip-scroll" >
+                            <table class="flip-content table table-bordered table-hover table-striped" >
+                                <thead>
+                                    <tr>
+                                        <td>Type</td>
+                                        <td>Value</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ( var claim in Model.Claims )
+                                    {
+                                        <tr>
+                                            <td>@claim.Key</td>
+                                            <td>
+                                                @claim.Value
+                                            </td>
+                                            <td>
+                                                <button>Remove</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <select name="ClaimType" >
+                                                @foreach ( var claimType in Model.ClaimTypes )
+                                                {
+                                                    <option value="@claimType" >@claimType</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input name="ClaimValue" type="text" />
+                                        </td>
+                                        <td>
+                                            <button>Add</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <span asp-validation-for="Name" class="has-error" ></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

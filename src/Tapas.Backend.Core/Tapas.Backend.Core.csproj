@@ -29,6 +29,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Areas\Backend\Views\Shared\Components\BackendScripts\Default.cshtml" />
+      <None Remove="Areas\Backend\Views\Shared\Components\BackendStyleSheets\Default.cshtml" />
       <None Remove="Areas\Backend\Views\Shared\Components\Menu\Default.cshtml" />
       <None Remove="Areas\Backend\Views\Shared\Components\Menu\_MenuGroup.cshtml" />
       <None Remove="Areas\Backend\Views\Shared\Components\Menu\_MenuItem.cshtml" />

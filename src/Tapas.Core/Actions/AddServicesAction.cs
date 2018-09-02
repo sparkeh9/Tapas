@@ -27,7 +27,7 @@
                                                      } );
             serviceCollection.AddAuthorization( options =>
                                                 {
-                                                    foreach ( var policy in ExtensionManager.GetInstances<IModuleAuthorisationPolicyFactory>().SelectMany( x => x.GetPolicies() ) )
+                                                    foreach ( var policy in ExtensionManager.GetInstances<IModuleAuthorisationFactory>().SelectMany( x => x.GetPolicies() ) )
                                                     {
                                                         options.AddPolicy( policy.Name, policy.Policy );
                                                     }

@@ -2,6 +2,7 @@
 {
     using System;
     using ExtCore.Infrastructure.Actions;
+    using Infrastructure.Assets;
     using Infrastructure.Menu;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,8 @@
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
             serviceCollection.AddScoped<MenuViewModelFactory>();
+            serviceCollection.AddScoped<BackendScriptsViewModelFactory>();
+            serviceCollection.AddScoped<BackendStylesheetViewModelFactory>();
             serviceCollection.AddSingleton<IAuthorizationHandler, ClaimOrSuperAdminHandler>();
         }
     }

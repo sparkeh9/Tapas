@@ -1,4 +1,4 @@
-﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.CreateUser
+﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.Users.CreateUser
 {
     using FluentValidation;
 

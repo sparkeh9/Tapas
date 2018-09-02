@@ -1,6 +1,6 @@
-﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.CreateUser
+﻿namespace Tapas.Backend.UserManagement.Areas.Backend.Models.Users.CreateUser
 {
-    public class CreateUserViewModel
+    public class CreateUserDto
     {
         public string Username { get; set; }
         public string Email { get; set; }
