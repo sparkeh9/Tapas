@@ -8,29 +8,31 @@
     <div class="title-block" >
         <h3 class="title" >Edit a Role</h3>
     </div>
-    <section class="section" >
-        <div class="row sameheight-container" >
-            <div class="col-md-6" >
-                <form autocomplete="off" method="post" role="form" >
-                    <div class="card card-block sameheight-item" >
-                        <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Name ) )" >
-                            <label class="control-label" >Name:</label>
+    <section class="section">
+        <div class="row">
+            <div class="col-md-12">
+                <form autocomplete="off" method="post" role="form">
+                    <div class="card card-block sameheight-item">
+                        <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Name ) )">
+                            <label class="control-label">Name:</label>
                             <input asp-for="Name" class="form-control underlined" data-lpignore="true" />
-                            <span asp-validation-for="Name" class="has-error" ></span>
+                            <span asp-validation-for="Name" class="has-error"></span>
                         </div>
-                        <div class="form-group" >
-                            <button class="btn btn-primary" type="submit" >Submit</button>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-md-6" >
-                <div class="card card-block sameheight-item" >
-                    <div class="form-group" >
-                        <label class="title-block" >Claims</label>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-block sameheight-item">
+                    <div class="form-group">
+                        <label class="title-block">Claims</label>
 
                         <div>
-                            <table class="flip-content table table-bordered table-hover table-striped" id="ClaimContainer" >
+                            <table class="flip-content table table-bordered table-hover table-striped" id="ClaimContainer">
                                 <thead>
                                     <tr>
                                         <td>Type</td>
@@ -38,15 +40,15 @@
                                         <td></td>
                                     </tr>
                                 </thead>
-                                <tbody id="ClaimInsertionPoint" >
-                                    @foreach ( var claim in Model.Claims )
+                                <tbody id="ClaimInsertionPoint">
+                                    @foreach (var claim in Model.Claims)
                                     {
                                         <tr>
                                             <td>@claim.Type</td>
                                             <td>@claim.Value</td>
                                             <td>
                                                 <button class="RemoveClaimButton" data-ClaimType="@claim.Type"
-                                                        data-ClaimValue="@claim.Value" >
+                                                        data-ClaimValue="@claim.Value">
                                                     Remove
                                                 </button>
                                             </td>
@@ -56,10 +58,10 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <select class="form-control form-control-lg" id="ClaimTypeSelector" name="ClaimType" >
-                                                @foreach ( string claimType in Model.ClaimTypes )
+                                            <select class="form-control form-control-lg" id="ClaimTypeSelector" name="ClaimType">
+                                                @foreach (string claimType in Model.ClaimTypes)
                                                 {
-                                                    <option value="@claimType" >@claimType</option>
+                                                    <option value="@claimType">@claimType</option>
                                                 }
                                             </select>
                                         </td>
@@ -67,13 +69,13 @@
                                             <input class="form-control form-control-lg underlined" id="ClaimValueInput" name="ClaimValue" type="text" />
                                         </td>
                                         <td>
-                                            <button id="AddNewClaim" >Add</button>
+                                            <button id="AddNewClaim">Add</button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <span asp-validation-for="Name" class="has-error" ></span>
+                        <span asp-validation-for="Name" class="has-error"></span>
                     </div>
                 </div>
             </div>
