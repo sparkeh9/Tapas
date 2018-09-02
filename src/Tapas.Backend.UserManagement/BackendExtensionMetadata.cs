@@ -2,19 +2,18 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Core.Infrastructure.Menu;
     using Core.Infrastructure.Metadata;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    public class ExtensionMetadata : IBackendExtensionMetadata
+    public class BackendExtensionMetadata : IBackendExtensionMetadata
     {
         public IUrlHelper UrlHelper { get; set; }
 
         public IEnumerable<BackendStyleSheet> StyleSheets()
         {
-            return Enumerable.Empty<BackendStyleSheet>();
+            yield return new BackendStyleSheet("~/wwwroot.backend/css/jquery.auto-complete.css", 999 );
         }
 
         public IEnumerable<BackendScript> Scripts()

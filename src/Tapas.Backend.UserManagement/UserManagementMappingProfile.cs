@@ -16,7 +16,7 @@
             CreateMap<ApplicationUser, EditUserViewModel>().ReverseMap();
 
             CreateMap<CreateRoleDto, CreateRoleViewModel>().ReverseMap();
-            CreateMap<EditUserDto, EditRoleViewModel>().ReverseMap();
+            CreateMap<EditRoleDto, EditRoleViewModel>().ReverseMap();
             CreateMap<ApplicationRole, EditRoleViewModel>().ReverseMap();
         }
     }

@@ -26,41 +26,7 @@
         <EmbeddedResource Include="**\*.ttf" />
         <EmbeddedResource Include="**\*.woff" />
         <EmbeddedResource Include="**\*.woff2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="Areas\Backend\Views\_ViewImports.cshtml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Areas\Backend\Views\Roles\Edit.cshtml" />
-      <None Remove="Areas\Backend\Views\Roles\Index.cshtml" />
-      <None Remove="Areas\Backend\Views\Roles\New.cshtml" />
-      <None Remove="Areas\Backend\Views\Users\Edit.cshtml" />
-      <None Remove="Areas\Backend\Views\Users\Index.cshtml" />
-      <None Remove="Areas\Backend\Views\Users\New.cshtml" />
-      <None Remove="Areas\Backend\Views\_ViewImports.cshtml" />
-      <None Remove="wwwroot.backend\css\app-blue.css" />
-      <None Remove="wwwroot.backend\css\app-custom.css" />
-      <None Remove="wwwroot.backend\css\app-green.css" />
-      <None Remove="wwwroot.backend\css\app-orange.css" />
-      <None Remove="wwwroot.backend\css\app-purple.css" />
-      <None Remove="wwwroot.backend\css\app-red.css" />
-      <None Remove="wwwroot.backend\css\app-seagreen.css" />
-      <None Remove="wwwroot.backend\css\app.css" />
-      <None Remove="wwwroot.backend\css\vendor.css" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.eot" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.svg" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.ttf" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.woff" />
-      <None Remove="wwwroot.backend\fonts\fontawesome-webfont.woff2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="Areas\Backend\Views\_ViewImports.cshtml">
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-        <Pack>$(IncludeRazorContentInPack)</Pack>
-      </Content>
+        <EmbeddedResource Include="**\*.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -69,7 +35,4 @@
         <ProjectReference Include="..\Tapas.Data.EntityFramework\Tapas.Data.EntityFramework.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="wwwroot.backend\js\" />
-    </ItemGroup>
 </Project>

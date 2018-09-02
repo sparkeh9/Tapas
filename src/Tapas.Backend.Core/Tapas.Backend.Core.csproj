@@ -19,26 +19,18 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Include="**\*.css" />
-      <EmbeddedResource Include="**\*.js" />
-      <EmbeddedResource Include="**\*.eot" />
-      <EmbeddedResource Include="**\*.svg" />
-      <EmbeddedResource Include="**\*.ttf" />
-      <EmbeddedResource Include="**\*.woff" />
-      <EmbeddedResource Include="**\*.woff2" />
+        <EmbeddedResource Include="**\*.css" />
+        <EmbeddedResource Include="**\*.js" />
+        <EmbeddedResource Include="**\*.eot" />
+        <EmbeddedResource Include="**\*.svg" />
+        <EmbeddedResource Include="**\*.ttf" />
+        <EmbeddedResource Include="**\*.woff" />
+        <EmbeddedResource Include="**\*.woff2" />
+        <EmbeddedResource Include="**\*.png" />
     </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Areas\Backend\Views\Shared\Components\BackendScripts\Default.cshtml" />
-      <None Remove="Areas\Backend\Views\Shared\Components\BackendStyleSheets\Default.cshtml" />
-      <None Remove="Areas\Backend\Views\Shared\Components\Menu\Default.cshtml" />
-      <None Remove="Areas\Backend\Views\Shared\Components\Menu\_MenuGroup.cshtml" />
-      <None Remove="Areas\Backend\Views\Shared\Components\Menu\_MenuItem.cshtml" />
-    </ItemGroup>
+    
 
     <ItemGroup>
       <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
     </ItemGroup>
-
-
 </Project>

@@ -18,7 +18,7 @@
                             <input asp-for="Name" class="form-control underlined" data-lpignore="true" />
                             <span asp-validation-for="Name" class="has-error" ></span>
                         </div>
-                        <div class="form-group pull-right" >
+                        <div class="form-group" >
                             <button class="btn btn-primary" type="submit" >Submit</button>
                         </div>
                     </div>
@@ -26,11 +26,11 @@
             </div>
             <div class="col-md-6" >
                 <div class="card card-block sameheight-item" >
-                    <div class="form-group @( Html.AddValidationErrorClassFor( x => x.Name ) )" >
+                    <div class="form-group" >
                         <label class="title-block" >Claims</label>
 
-                        <div class="table-flip-scroll" >
-                            <table class="flip-content table table-bordered table-hover table-striped" >
+                        <div>
+                            <table class="flip-content table table-bordered table-hover table-striped" id="ClaimContainer" >
                                 <thead>
                                     <tr>
                                         <td>Type</td>
@@ -38,16 +38,17 @@
                                         <td></td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="ClaimInsertionPoint" >
                                     @foreach ( var claim in Model.Claims )
                                     {
                                         <tr>
-                                            <td>@claim.Key</td>
+                                            <td>@claim.Type</td>
+                                            <td>@claim.Value</td>
                                             <td>
-                                                @claim.Value
-                                            </td>
-                                            <td>
-                                                <button>Remove</button>
+                                                <button class="RemoveClaimButton" data-ClaimType="@claim.Type"
+                                                        data-ClaimValue="@claim.Value" >
+                                                    Remove
+                                                </button>
                                             </td>
                                         </tr>
                                     }
@@ -55,18 +56,18 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <select name="ClaimType" >
-                                                @foreach ( var claimType in Model.ClaimTypes )
+                                            <select class="form-control form-control-lg" id="ClaimTypeSelector" name="ClaimType" >
+                                                @foreach ( string claimType in Model.ClaimTypes )
                                                 {
                                                     <option value="@claimType" >@claimType</option>
                                                 }
                                             </select>
                                         </td>
                                         <td>
-                                            <input name="ClaimValue" type="text" />
+                                            <input class="form-control form-control-lg underlined" id="ClaimValueInput" name="ClaimValue" type="text" />
                                         </td>
                                         <td>
-                                            <button>Add</button>
+                                            <button id="AddNewClaim" >Add</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -74,8 +75,94 @@
                         </div>
                         <span asp-validation-for="Name" class="has-error" ></span>
                     </div>
+
+                    <div class="form-group" >
+                        <button class="btn btn-primary" type="button" >Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </article>
+
+@section Scripts{
+    <script>
+    ( function ( $ )
+    {
+        var claimContainer = $( '#ClaimContainer' );
+        var claimTypeSelector = $( '#ClaimTypeSelector' );
+        var claimValueInput = $( '#ClaimValueInput' );
+        var createClaimButton = $( '#AddNewClaim' );
+        var claimInsertionPoint = $( '#ClaimInsertionPoint' );
+
+        $( '#ClaimValueInput' ).autoComplete( {
+            cache: false,
+            minChars: 0,
+            source: function ( term, response )
+            {
+                $.getJSON( '@Url.Action( "get-claims" )', { claimType: $( '#ClaimTypeSelector' ).val() }, function ( data )
+                {
+                    response( data );
+                } );
+            }
+        } );
+
+        createClaimButton.click( function ()
+        {
+            if( claimValueInput.val().length === 0 )
+            {
+                console.log( 'empty' );
+                return;
+            }
+
+            var type = claimTypeSelector.val();
+            var value = claimValueInput.val();
+
+            $.ajax( {
+                type: 'POST',
+                url: '@Url.Action( "AddClaim", new { id = Model.Id } )',
+                data: {
+                    claimType: type,
+                    claimValue: value
+                },
+                success: function ()
+                {
+                    claimInsertionPoint.append( `<tr>
+                                                <td>${ type }</td>
+                                                <td>${ value }</td>
+                                                <td>
+                                                    <button class="RemoveClaimButton"
+                                                            data-ClaimType="${ type }"
+                                                            data-ClaimValue="${ value }" >
+                                                        Remove
+                                                    </button>
+                                                </td>
+                                            </tr>` );
+
+                    claimValueInput.val( '' );
+                }
+            } );
+        } );
+
+        claimContainer.on( 'click', 'button.RemoveClaimButton', function ()
+        {
+            var button = $( this );
+            var type = $( this ).attr( 'data-ClaimType' );
+            var value = $( this ).attr( 'data-ClaimValue' );
+
+            $.ajax( {
+                type: 'POST',
+                url: '@Url.Action( "RemoveClaim", new { id = Model.Id } )',
+                    data: {
+                        claimType: type,
+                        claimValue: value
+                    },
+                    success: function ()
+                    {
+                        button.closest( 'tr' ).remove();
+                    }
+                } );
+            } );
+        } )( jQuery );
+    </script>
+}

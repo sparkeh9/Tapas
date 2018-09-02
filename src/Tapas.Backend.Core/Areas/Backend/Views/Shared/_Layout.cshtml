@@ -119,9 +119,7 @@
                 <div class="color-secondary" ></div>
             </div>
         </div>
-        @* <script src="~/wwwroot.backend/js/vendor.js"  asp-append-version="true"></script> *@
-        @* <script src="~/wwwroot.backend/js/app.js"  asp-append-version="true"></script> *@
         @await Component.InvokeAsync( "BackendScripts" )
-
+        @RenderSection("Scripts", required: false)
     </body>
 </html>

@@ -100,7 +100,7 @@
         [ HttpGet ]
         public async Task<IActionResult> Edit( string id )
         {
-            var role = await roleManager.FindByIdAsync( id );
+            ApplicationRole role = await roleManager.FindByIdAsync( id );
             if ( role == null )
             {
                 return NotFound();
@@ -122,9 +122,50 @@
                 return NotFound();
             }
 
+            if ( ModelState.IsValid )
+            {
+                var result = await roleManager.CreateAsync( new ApplicationRole( request.Name ) );
+
+                if ( result.Succeeded )
+                {
+                    return RedirectToAction( "Edit", new { id = role.Id } );
+                }
+            }
+
+
             var viewModel = mapper.Map<EditRoleViewModel>( role );
             await PopulateClaims( role, viewModel );
             return View( viewModel );
+        }
+
+        [ HttpPost ]
+        public async Task<IActionResult> AddClaim( string id, [ FromForm ] string claimType, [ FromForm ] string claimValue )
+        {
+            var role = await roleManager.FindByIdAsync( id );
+
+            if ( role == null )
+            {
+                return NotFound();
+            }
+
+            await roleManager.AddClaimAsync( role, new Claim( claimType, claimValue ) );
+
+            return Ok();
+        }
+
+        [ HttpPost ]
+        public async Task<IActionResult> RemoveClaim( string id, [ FromForm ] string claimType, [ FromForm ] string claimValue )
+        {
+            var role = await roleManager.FindByIdAsync( id );
+
+            if ( role == null )
+            {
+                return NotFound();
+            }
+
+            await roleManager.RemoveClaimAsync( role, new Claim( claimType, claimValue ) );
+
+            return Ok();
         }
 
         [ HttpGet ]
@@ -141,8 +182,7 @@
 
         private async Task PopulateClaims( ApplicationRole role, EditRoleViewModel viewModel )
         {
-            var roleClaims = await roleManager.GetClaimsAsync( role );
-            viewModel.Claims = roleClaims.ToDictionary( x => x.Type, x => x.Value );
+            viewModel.Claims = ( await roleManager.GetClaimsAsync( role ) ).ToList();
             viewModel.ClaimTypes = new List<string>
             {
                 "Permission"
