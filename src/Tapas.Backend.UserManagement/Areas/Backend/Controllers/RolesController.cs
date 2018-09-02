@@ -100,7 +100,7 @@
         [ HttpGet ]
         public async Task<IActionResult> Edit( string id )
         {
-            ApplicationRole role = await roleManager.FindByIdAsync( id );
+            var role = await roleManager.FindByIdAsync( id );
             if ( role == null )
             {
                 return NotFound();
@@ -124,14 +124,9 @@
 
             if ( ModelState.IsValid )
             {
-                var result = await roleManager.CreateAsync( new ApplicationRole( request.Name ) );
-
-                if ( result.Succeeded )
-                {
-                    return RedirectToAction( "Edit", new { id = role.Id } );
-                }
+                role.Name = request.Name;
+                await roleManager.UpdateAsync(role);
             }
-
 
             var viewModel = mapper.Map<EditRoleViewModel>( role );
             await PopulateClaims( role, viewModel );
