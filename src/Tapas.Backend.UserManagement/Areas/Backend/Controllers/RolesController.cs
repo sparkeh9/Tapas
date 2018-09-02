@@ -148,6 +148,13 @@
                 return NotFound();
             }
 
+            var existingClaims = await roleManager.GetClaimsAsync( role );
+
+            if ( existingClaims.Any( x => x.Value == claimValue) )
+            {
+                return Conflict();
+            }
+
             await roleManager.AddClaimAsync( role, new Claim( claimType, claimValue ) );
 
             return Ok();
