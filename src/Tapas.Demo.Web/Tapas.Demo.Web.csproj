@@ -11,15 +11,16 @@
   <ItemGroup>
     <PackageReference Include="ExtCore.Mvc" Version="3.3.0" />
     <PackageReference Include="ExtCore.WebApplication" Version="3.3.0" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.100" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Tapas.Authentication\Tapas.Authentication.csproj" />
     <ProjectReference Include="..\Tapas.Backend.Core\Tapas.Backend.Core.csproj" />
     <ProjectReference Include="..\Tapas.Backend.UserManagement\Tapas.Backend.UserManagement.csproj" />
+    <ProjectReference Include="..\Tapas.Cms.FlatFile.Core\Tapas.Cms.FlatFile.Core.csproj" />
     <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
     <ProjectReference Include="..\Tapas.Data.EntityFramework.MySQL\Tapas.Data.EntityFramework.MySQL.csproj" />
   </ItemGroup>
