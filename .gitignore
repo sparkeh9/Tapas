@@ -1,3 +1,7 @@
+### Test configuration ###
+tests/Tapas.Cms.FlatFile.Core.Tests/appsettings.json
+
+
 ### macOS ###
 *.DS_Store
 .AppleDouble

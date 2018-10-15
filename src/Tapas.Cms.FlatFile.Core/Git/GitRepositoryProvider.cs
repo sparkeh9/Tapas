@@ -1,9 +1,10 @@
-﻿namespace Tapas.Cms.FlatFile.Core
+﻿namespace Tapas.Cms.FlatFile.Core.Git
 {
     using System;
+    using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
     using LibGit2Sharp;
-    using Tapas.Core.ExtensionMethods;
 
     public class GitRepositoryProvider : IGitRepositoryProvider
     {
@@ -11,7 +12,13 @@
         {
             await Task.Delay( 0 );
 
-            Repository.Clone( options.RepositoryUrl, options.FilePath, new CloneOptions
+            string absoluteFilePath = options.FilePath;
+            if ( !Path.IsPathFullyQualified( absoluteFilePath ) )
+            {
+                absoluteFilePath = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, absoluteFilePath );
+            }
+
+            Repository.Clone( options.RepositoryUrl, absoluteFilePath, new CloneOptions
             {
                 BranchName = options.Branch,
                 CredentialsProvider = ( url, fromUrl, types ) => BuildCredentialsProvider( url, fromUrl, types, options )
@@ -22,25 +29,36 @@
         {
             var repoUri = new Uri( options.RepositoryUrl );
 
+            var userInfo = repoUri.UserInfo.Split( ':' );
             if ( repoUri.Scheme == "http" || repoUri.Scheme == "https" )
-            {
-                if ( options.Username.IsNullOrWhiteSpace() )
+            {   
+                if ( !userInfo.Any() )
                 {
                     return new DefaultCredentials();
                 }
 
+                string username = userInfo[ 0 ];
+                string password = userInfo.ElementAtOrDefault( 1 ) ?? string.Empty;
+
                 return new UsernamePasswordCredentials
                 {
-                    Username = options.Username,
-                    Password = options.Password
+                    Username = username,
+                    Password = password
                 };
             }
 
             if ( repoUri.Scheme == "git" )
             {
+                string username = "git";
+
+                if ( userInfo.Any() )
+                {
+                    username = userInfo[ 0 ];
+                }
+
                 return new SshUserKeyCredentials
                 {
-                    Username = repoUri.UserInfo.Split( ':' )[ 0 ],
+                    Username = username,
                     PublicKey = options.PublicKey,
                     PrivateKey = options.PrivateKey,
                     Passphrase = options.Passphrase

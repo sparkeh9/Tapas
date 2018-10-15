@@ -1,4 +1,4 @@
-﻿namespace Tapas.Cms.FlatFile.Core
+﻿namespace Tapas.Cms.FlatFile.Core.Git
 {
     using System.Threading.Tasks;
 

@@ -1,13 +1,7 @@
-﻿namespace Tapas.Cms.FlatFile.Core
+﻿namespace Tapas.Cms.FlatFile.Core.Git
 {
     public class FlatFileCmsGitOptions
     {
-        /// <summary>
-        /// For non-SSH cloning
-        /// </summary>
-        public string Username { get; set; }
-        public string Password { get; set; }
-
         public string FilePath { get; set; }
         public string RepositoryUrl { get; set; }
         public string Branch { get; set; }
