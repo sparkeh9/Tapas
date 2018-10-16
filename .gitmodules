@@ -1,3 +1,6 @@
 [submodule "Pages"]
 	path = Pages
 	url = git@github.com:sparkeh9/TapasTestContent.git
+[submodule "src/Tapas.Demo.Web/Pages"]
+	path = src/Tapas.Demo.Web/Pages
+	url = git@github.com:sparkeh9/TapasTestContent.git
