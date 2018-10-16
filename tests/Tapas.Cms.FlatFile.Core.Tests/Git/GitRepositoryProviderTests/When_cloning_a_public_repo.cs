@@ -26,8 +26,7 @@ namespace Tapas.Cms.FlatFile.Core.Tests.Git.GitRepositoryProviderTests
                     RepositoryUrl = "https://github.com/sparkeh9/Tapas.git",
                     FilePath = RepoPath
                 } );
-
-
+                
                 Directory.Exists( gitRepoPath )
                          .ShouldBeTrue();
             }

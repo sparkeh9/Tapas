@@ -43,5 +43,31 @@ namespace Tapas.Cms.FlatFile.Core.Tests.Git.GitRepositoryProviderTests
                 gitRepoPath.DeleteDirectory();
             }
         }
+
+        [ Fact ]
+        public async Task Should_clone_private_repo_with_ssh_keypair()
+        {
+            string gitRepoPath = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, RepoPath );
+
+            try
+            {
+                var sut = SystemUnderTest();
+                await sut.CloneRepositoryToPathAsync( new FlatFileCmsGitOptions
+                {
+                    RepositoryUrl = fixture.Options.SshPrivateRepo.RepoUrl,
+                    FilePath = RepoPath,
+                    PrivateKey = fixture.Options.SshPrivateRepo.PrivateKey,
+                    PublicKey = fixture.Options.SshPrivateRepo.PublicKey,
+                    Passphrase = fixture.Options.SshPrivateRepo.Passphrase,
+                } );
+
+                Directory.Exists( gitRepoPath )
+                         .ShouldBeTrue();
+            }
+            finally
+            {
+                gitRepoPath.DeleteDirectory();
+            }
+        }
     }
 }

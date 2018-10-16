@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using LibGit2Sharp;
+    using Tapas.Core.ExtensionMethods;
 
     public class GitRepositoryProvider : IGitRepositoryProvider
     {
@@ -27,11 +28,24 @@
 
         private Credentials BuildCredentialsProvider( string url, string fromUrl, SupportedCredentialTypes types, FlatFileCmsGitOptions options )
         {
-            var repoUri = new Uri( options.RepositoryUrl );
+            if ( types.HasFlag( SupportedCredentialTypes.Ssh ) )
+            {
+                string username = fromUrl.IsNullOrWhiteSpace() ? "git" : fromUrl;
 
-            var userInfo = repoUri.UserInfo.Split( ':' );
-            if ( repoUri.Scheme == "http" || repoUri.Scheme == "https" )
-            {   
+                return new SshUserKeyCredentials
+                {
+                    Username = username,
+                    PublicKey = options.PublicKey,
+                    PrivateKey = options.PrivateKey,
+                    Passphrase = options.Passphrase
+                };
+            }
+            
+            if ( types.HasFlag( SupportedCredentialTypes.UsernamePassword ) )
+            {
+                var repoUri = new Uri( url );
+                var userInfo = repoUri.UserInfo.Split( ':' );
+
                 if ( !userInfo.Any() )
                 {
                     return new DefaultCredentials();
@@ -47,25 +61,7 @@
                 };
             }
 
-            if ( repoUri.Scheme == "git" )
-            {
-                string username = "git";
-
-                if ( userInfo.Any() )
-                {
-                    username = userInfo[ 0 ];
-                }
-
-                return new SshUserKeyCredentials
-                {
-                    Username = username,
-                    PublicKey = options.PublicKey,
-                    PrivateKey = options.PrivateKey,
-                    Passphrase = options.Passphrase
-                };
-            }
-
-            throw new ArgumentOutOfRangeException( nameof( options.RepositoryUrl ), "Unknown scheme for git repository" );
+            return new DefaultCredentials();
         }
     }
 }
