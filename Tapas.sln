@@ -41,11 +41,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Backend.UserManagemen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CMS", "CMS", "{A1FE5304-82F4-4ECC-8487-5AAA3E3F87A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Cms.FlatFile.Core", "src\Tapas.Cms.FlatFile.Core\Tapas.Cms.FlatFile.Core.csproj", "{C04477BA-3D2E-405D-B18E-10687850FA78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Cms.FlatFile.Core", "src\Tapas.Cms.FlatFile.Core\Tapas.Cms.FlatFile.Core.csproj", "{C04477BA-3D2E-405D-B18E-10687850FA78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Cms.FlatFile.Core.Tests", "tests\Tapas.Cms.FlatFile.Core.Tests\Tapas.Cms.FlatFile.Core.Tests.csproj", "{6CFCF10D-4EE4-4568-935F-C88AC691B39D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Cms.FlatFile.Core.Tests", "tests\Tapas.Cms.FlatFile.Core.Tests\Tapas.Cms.FlatFile.Core.Tests.csproj", "{6CFCF10D-4EE4-4568-935F-C88AC691B39D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Core.Tests", "tests\Tapas.Core.Tests\Tapas.Core.Tests.csproj", "{AF964020-26F9-4923-9B25-A9839CD9FBB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Core.Tests", "tests\Tapas.Core.Tests\Tapas.Core.Tests.csproj", "{AF964020-26F9-4923-9B25-A9839CD9FBB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

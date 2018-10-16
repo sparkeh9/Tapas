@@ -2,6 +2,7 @@
 {
     using System;
     using Backend.Core;
+    using Cms.FlatFile.Core.Git;
     using Data.EntityFramework;
     using ExtCore.Data.EntityFramework;
     using ExtCore.WebApplication.Extensions;
@@ -36,24 +37,29 @@
             services.AddSingleton( hostingEnvironment );
             services.Configure<BackendOptions>( Configuration.GetSection( "Backend" ) );
             services.Configure<StorageContextOptions>( Configuration.GetSection( "StorageContext" ) );
+            services.Configure<FlatFileCmsGitOptions>( Configuration.GetSection( "FlatFileCmsGit" ) );
             services.Configure<CookiePolicyOptions>( options =>
                                                      {
                                                          // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                                                          options.CheckConsentNeeded = context => true;
                                                          options.MinimumSameSitePolicy = SameSiteMode.None;
                                                      } );
+
+
+            var mvcBuilder = services.AddMvc( options =>
+                                              {
+                                                  var policy = new AuthorizationPolicyBuilder()
+                                                               .RequireAuthenticatedUser()
+                                                               .Build();
+
+                                                  options.Filters.Add( new AuthorizeFilter( policy ) );
+                                              } );
+            mvcBuilder.SetCompatibilityVersion( CompatibilityVersion.Version_2_1 )
+                      .AddFluentValidation();
+
+            services.AddSingleton( mvcBuilder );
             services.AddExtCore( extensionsPath );
             services.AddRouting( x => x.LowercaseUrls = true );
-            services.AddMvc( options =>
-                             {
-                                 var policy = new AuthorizationPolicyBuilder()
-                                              .RequireAuthenticatedUser()
-                                              .Build();
-
-                                 options.Filters.Add( new AuthorizeFilter( policy ) );
-                             } )
-                    .SetCompatibilityVersion( CompatibilityVersion.Version_2_1 )
-                    .AddFluentValidation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

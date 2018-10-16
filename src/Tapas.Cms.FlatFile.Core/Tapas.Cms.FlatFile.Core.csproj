@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ExtCore.Mvc.Infrastructure" Version="3.3.0" />
     <PackageReference Include="LibGit2Sharp-SSH" Version="1.0.22" />
   </ItemGroup>
 

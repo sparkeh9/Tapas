@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>eaa7bab3-1964-4828-b992-fac8ffb8eb79</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,5 +25,7 @@
     <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
     <ProjectReference Include="..\Tapas.Data.EntityFramework.MySQL\Tapas.Data.EntityFramework.MySQL.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>
