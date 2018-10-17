@@ -6,7 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="ExtCore.Mvc.Infrastructure" Version="3.3.0" />
-    <PackageReference Include="LibGit2Sharp-SSH" Version="1.0.22" />
+    <PackageReference Include="LibGit2Sharp-SSH-updated-libssh2" Version="1.0.25" />
+    <PackageReference Include="LibGit2Sharp-SSH.NativeBinaries-libssh2-1.8.1.0" Version="1.0.16" />
   </ItemGroup>
 
   <ItemGroup>
