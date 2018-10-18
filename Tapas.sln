@@ -47,8 +47,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Cms.FlatFile.Core.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Core.Tests", "tests\Tapas.Core.Tests\Tapas.Core.Tests.csproj", "{AF964020-26F9-4923-9B25-A9839CD9FBB6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{59CEF803-87FA-45EB-9D1B-AEB6840DDDF4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
