@@ -1,12 +1,13 @@
 ﻿namespace Tapas.Cms.FlatFile.Core.Actions
 {
     using System;
+    using System.IO;
     using ExtCore.Infrastructure.Actions;
     using Git;
-    using Infrastructure;
-    using Microsoft.AspNetCore.Mvc.ApplicationModels;
+    using Microsoft.AspNetCore.Mvc.Razor;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Options;
+    using Microsoft.Extensions.FileProviders;
 
     public class ConfigureServicesAction : IConfigureServicesAction
     {
@@ -14,31 +15,22 @@
 
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
-            var flatFileCmsOptions = serviceProvider.GetService<IOptions<FlatFileCmsGitOptions>>()?.Value;
 
-            var fileProvider = new PhysicalFileProvider(flatFileCmsOptions.FilePath);
-            serviceCollection.AddSingleton(fileProvider);
-            serviceCollection.AddTransient<FlatFileCmsProviderRazorProjectFileSystem>();
-            serviceCollection.AddSingleton<IPageRouteModelProvider, FlatFileCmsRazorProjectPageRouteModelProvider>();
+            var configuration = serviceProvider.GetService<IConfiguration>();
             serviceCollection.AddTransient<IGitRepositoryProvider, GitRepositoryProvider>();
+            serviceCollection.Configure<FlatFileCmsGitOptions>( configuration.GetSection( "FlatFileCmsGit" ) );
+            serviceCollection.Configure<RazorViewEngineOptions>( options =>
+                                                                 {
+                                                                     var cmsOptions = new FlatFileCmsGitOptions();
+                                                                     configuration.Bind( "FlatFileCmsGit", cmsOptions );
 
-            var mvcBuilder = serviceProvider.GetService<IMvcBuilder>();
+                                                                     if ( !Directory.Exists( cmsOptions.FilePath ) )
+                                                                     {
+                                                                         Directory.CreateDirectory( cmsOptions.FilePath );
+                                                                     }
 
-//            if ( flatFileCmsOptions == null || flatFileCmsOptions.FilePath.IsNullOrWhiteSpace() )
-//            {
-//                throw new ArgumentNullException( $"{nameof( FlatFileCmsGitOptions )}.{nameof( FlatFileCmsGitOptions.FilePath )}" );
-//            }
-
-//            var relativePath = MakeRelative( flatFileCmsOptions.FilePath, AppDomain.CurrentDomain.BaseDirectory );
-
-            mvcBuilder.AddRazorPagesOptions( options => { options.AllowAreas = true; } );
+                                                                     options.FileProviders.Add( new PhysicalFileProvider( cmsOptions.FilePath ) );
+                                                                 } );
         }
-
-//        public static string MakeRelative( string filePath, string referencePath )
-//        {
-//            var fileUri = new Uri( filePath );
-//            var referenceUri = new Uri( referencePath );
-//            return referenceUri.MakeRelativeUri( fileUri ).ToString();
-//        }
     }
 }

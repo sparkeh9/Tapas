@@ -3,23 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>eaa7bab3-1964-4828-b992-fac8ffb8eb79</UserSecretsId>
-      
-      <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
+    <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>7.3</LangVersion>
+
   </PropertyGroup>
 
 
   <ItemGroup>
     <Content Remove="Pages\MyRazorPage.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Include="Pages\**\*.cshtml">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Page>
   </ItemGroup>
 
   <ItemGroup>
