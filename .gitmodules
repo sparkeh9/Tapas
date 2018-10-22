@@ -1,0 +1,7 @@
+[submodule "src/Tapas.Demo.Web/Pages"]
+	path = src/Tapas.Demo.Web/Pages
+	url = git@github.com:sparkeh9/TapasTestContent.git
+	branch = master
+[submodule "src/Tapas.Demo.Web/CmsContent"]
+	path = src/Tapas.Demo.Web/CmsContent
+	url = git@github.com:sparkeh9/TapasTestContent.git
