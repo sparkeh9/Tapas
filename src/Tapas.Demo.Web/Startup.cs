@@ -1,9 +1,7 @@
 ﻿namespace Tapas.Demo.Web
 {
     using System;
-    using Backend.Core;
     using Data.EntityFramework;
-    using ExtCore.Data.EntityFramework;
     using ExtCore.WebApplication.Extensions;
     using FluentValidation.AspNetCore;
     using Microsoft.AspNetCore.Authorization;
@@ -32,11 +30,8 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices( IServiceCollection services )
         {
-            services.AddSingleton( Configuration );
-            services.AddSingleton( hostingEnvironment );
-            services.Configure<BackendOptions>( Configuration.GetSection( "Backend" ) );
-            services.Configure<StorageContextOptions>( Configuration.GetSection( "StorageContext" ) );
-            services.AddExtCore( extensionsPath );
+            services.AddSingleton( Configuration )
+                    .AddSingleton( hostingEnvironment );
 
             services.Configure<CookiePolicyOptions>( options =>
                                                      {
@@ -44,9 +39,8 @@
                                                          options.CheckConsentNeeded = context => true;
                                                          options.MinimumSameSitePolicy = SameSiteMode.None;
                                                      } );
-
-            services.AddRouting( x => x.LowercaseUrls = true );
-            services.AddMvc( options =>
+            services.AddRouting( x => x.LowercaseUrls = true )
+                    .AddMvc( options =>
                              {
                                  var policy = new AuthorizationPolicyBuilder()
                                               .RequireAuthenticatedUser()
@@ -54,9 +48,10 @@
 
                                  options.Filters.Add( new AuthorizeFilter( policy ) );
                              } )
-                    .AddRazorPagesOptions( options => { options.AllowAreas = true; } )
                     .SetCompatibilityVersion( CompatibilityVersion.Version_2_1 )
                     .AddFluentValidation();
+
+            services.AddExtCore( extensionsPath );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

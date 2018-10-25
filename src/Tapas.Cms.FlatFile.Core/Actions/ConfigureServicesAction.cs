@@ -4,7 +4,6 @@
     using System.IO;
     using ExtCore.Infrastructure.Actions;
     using Git;
-    using Microsoft.AspNetCore.Mvc.Razor;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.FileProviders;
@@ -15,22 +14,24 @@
 
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
-
             var configuration = serviceProvider.GetService<IConfiguration>();
             serviceCollection.AddTransient<IGitRepositoryProvider, GitRepositoryProvider>();
-            serviceCollection.Configure<FlatFileCmsGitOptions>( configuration.GetSection( "FlatFileCmsGit" ) );
-            serviceCollection.Configure<RazorViewEngineOptions>( options =>
-                                                                 {
-                                                                     var cmsOptions = new FlatFileCmsGitOptions();
-                                                                     configuration.Bind( "FlatFileCmsGit", cmsOptions );
+            serviceCollection.Configure<FlatFileCmsGitOptions>( configuration.GetSection( "Tapas:FlatFileCmsGit" ) );
 
-                                                                     if ( !Directory.Exists( cmsOptions.FilePath ) )
-                                                                     {
-                                                                         Directory.CreateDirectory( cmsOptions.FilePath );
-                                                                     }
+            var cmsOptions = new FlatFileCmsGitOptions();
+            configuration.Bind( "Tapas:FlatFileCmsGit", cmsOptions );
 
-                                                                     options.FileProviders.Add( new PhysicalFileProvider( cmsOptions.FilePath ) );
-                                                                 } );
+            serviceCollection.AddMvc()
+                             .AddRazorPagesOptions( o => { o.AllowAreas = true; } )
+                             .AddRazorOptions( options =>
+                                               {
+                                                   if ( !Directory.Exists( cmsOptions.FilePath ) )
+                                                   {
+                                                       Directory.CreateDirectory( cmsOptions.FilePath );
+                                                   }
+                                                   
+                                                   options.FileProviders.Add( new PhysicalFileProvider( cmsOptions.FilePath ) );
+                                               } );
         }
     }
 }

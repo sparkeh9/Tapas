@@ -5,6 +5,7 @@
     using Infrastructure.Assets;
     using Infrastructure.Menu;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Security;
 
@@ -14,6 +15,9 @@
 
         public void Execute( IServiceCollection serviceCollection, IServiceProvider serviceProvider )
         {
+            var configuration = serviceProvider.GetService<IConfiguration>();
+            serviceCollection.Configure<BackendOptions>( configuration.GetSection( "Tapas:Backend" ) );
+
             serviceCollection.AddScoped<MenuViewModelFactory>();
             serviceCollection.AddScoped<BackendScriptsViewModelFactory>();
             serviceCollection.AddScoped<BackendStylesheetViewModelFactory>();
