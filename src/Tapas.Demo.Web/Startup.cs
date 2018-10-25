@@ -24,7 +24,7 @@
         {
             this.hostingEnvironment = hostingEnvironment;
             Configuration = configuration;
-            extensionsPath = hostingEnvironment.ContentRootPath + configuration[ "Extensions:Path" ];
+            extensionsPath = hostingEnvironment.ContentRootPath + configuration[ "Tapas:Extensions:Path" ];
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
