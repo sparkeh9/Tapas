@@ -6,9 +6,8 @@
         <title>@Html.Raw( this.ViewBag.Title as string )</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" >
         <link href="apple-touch-icon.png" rel="apple-touch-icon" >
-
         @await Component.InvokeAsync( "BackendStyleSheets" )
-
+        @RenderSection( "Styles", required : false )
         <!-- Place favicon.ico in the root directory -->
     </head>
     <body>
@@ -120,6 +119,6 @@
             </div>
         </div>
         @await Component.InvokeAsync( "BackendScripts" )
-        @RenderSection("Scripts", required: false)
+        @RenderSection( "Scripts", required : false )
     </body>
 </html>

@@ -13,14 +13,14 @@
 
         public IEnumerable<BackendStyleSheet> StyleSheets()
         {
-            yield return new BackendStyleSheet("~/wwwroot.backend/css/vendor.css", 1 );
-            yield return new BackendStyleSheet("~/wwwroot.backend/css/app-orange.css", 2 );
+            yield return new BackendStyleSheet("~/backend/css/vendor.css", 1 );
+            yield return new BackendStyleSheet("~/backend/css/app-orange.css", 2 );
         }
 
         public IEnumerable<BackendScript> Scripts()
         {
-            yield return new BackendScript("~/wwwroot.backend/js/vendor.js", 1);
-            yield return new BackendScript("~/wwwroot.backend/js/app.js", 2);
+            yield return new BackendScript("~/backend/js/vendor.js", 1);
+            yield return new BackendScript("~/backend/js/app.js", 2);
         }
 
         public IEnumerable<MenuGroup> MenuGroups()

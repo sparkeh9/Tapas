@@ -1,11 +1,12 @@
-﻿namespace Tapas.Backend.UserManagement
+﻿namespace Tapas.Cms.FlatFile.Backend
 {
     using System;
     using System.Collections.Generic;
-    using Core.Infrastructure.Menu;
-    using Core.Infrastructure.Metadata;
+    using System.Linq;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Tapas.Backend.Core.Infrastructure.Menu;
+    using Tapas.Backend.Core.Infrastructure.Metadata;
 
     public class BackendExtensionMetadata : IBackendExtensionMetadata
     {
@@ -13,12 +14,14 @@
 
         public IEnumerable<BackendStyleSheet> StyleSheets()
         {
-            yield return new BackendStyleSheet("~/backend/css/jquery.auto-complete.css", 999 );
+            return Enumerable.Empty<BackendStyleSheet>();
+//            yield return new BackendStyleSheet("~/wwwroot.backend/css/jquery.auto-complete.css", 999 );
         }
 
         public IEnumerable<BackendScript> Scripts()
         {
-            yield return new BackendScript("~/backend/js/jquery.auto-complete.min.js", 999);
+            return Enumerable.Empty<BackendScript>();
+//            yield return new BackendScript("~/wwwroot.backend/js/jquery.auto-complete.min.js", 999);
         }
 
         public IEnumerable<MenuGroup> MenuGroups()
@@ -30,13 +33,9 @@
 
             yield return new MenuGroup( "Administration", "Administration", 0, new List<MenuItem>
             {
-                new MenuItem( "ManageUsers", "Manage Users", 1, UrlHelper.Action( "Index", "Users", new { area = "Backend" } ), "fa fa-users", new List<AuthorizeAttribute>
+                new MenuItem( "ManagePages", "Manage Pages", 1, UrlHelper.Action( "Index", "Pages", new { area = "Backend" } ), "fa fa-users", new List<AuthorizeAttribute>
                 {
-                    new AuthorizeAttribute( "Backend:Users:Manage" )
-                } ),
-                new MenuItem( "ManageRoles", "Manage Roles", 2, UrlHelper.Action( "Index", "Roles", new { area = "Backend" } ), "fa fa-unlock", new List<AuthorizeAttribute>
-                {
-                    new AuthorizeAttribute( "Backend:Users:Manage" )
+                    new AuthorizeAttribute( "Backend:Pages:Manage" )
                 } )
             },"fa fa-lock" );
         }

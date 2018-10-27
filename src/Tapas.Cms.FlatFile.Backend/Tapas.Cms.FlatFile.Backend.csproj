@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Areas\Backend\Views\Pages\Index.cshtml" />
+    <None Remove="Areas\Backend\Views\_ViewImports.cshtml" />
+    <None Remove="backend\css\grapes.min.css" />
+    <None Remove="backend\js\grapes.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Areas\Backend\Views\Pages\Index.cshtml" />
+    <EmbeddedResource Include="Areas\Backend\Views\_ViewImports.cshtml" />
+    <EmbeddedResource Include="backend\css\grapes.min.css" />
+    <EmbeddedResource Include="backend\js\grapes.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tapas.Backend.Core\Tapas.Backend.Core.csproj" />
+  </ItemGroup>
+
+</Project>

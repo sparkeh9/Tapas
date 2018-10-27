@@ -1,0 +1,20 @@
+﻿@{
+    ViewData[ "Title" ] = "Manage Pages";
+}
+
+@section Styles{
+    <link asp-append-version="true" href="~/backend/css/grapes.min.css" rel="stylesheet" />
+}
+
+<div id="gjs"></div>
+
+@section Scripts{
+    <script asp-append-version="true" src="~/backend/js/grapes.min.js" ></script>
+    <script type="text/javascript" >
+        const editor = grapesjs.init( {
+            container: '#gjs',
+            components: '<div class="txt-red">Hello world!</div>',
+            style: '.txt-red{color: red}'
+        } );
+    </script>
+}
