@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>

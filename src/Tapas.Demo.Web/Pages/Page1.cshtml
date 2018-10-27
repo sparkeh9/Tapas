@@ -1,0 +1,19 @@
+﻿@page "/page1"
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@model RazorPageModel
+@{
+    Layout = "_Layout";
+}
+@functions{
+
+    [ AllowAnonymous ]
+    public class RazorPageModel : PageModel
+    {
+    }
+
+}
+
+<h1>Page1</h1>
+<a asp-controller="Home" asp-action="Index"  asp-area="">Tapas.Demo.Web</a>
+<br />

@@ -10,11 +10,6 @@
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
-
-  <ItemGroup>
-    <Content Remove="Pages\MyRazorPage.cshtml" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="ExtCore.Mvc" Version="3.3.0" />
     <PackageReference Include="ExtCore.WebApplication" Version="3.3.0" />
@@ -30,6 +25,36 @@
     <ProjectReference Include="..\Tapas.Cms.FlatFile.Core\Tapas.Cms.FlatFile.Core.csproj" />
     <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
     <ProjectReference Include="..\Tapas.Data.EntityFramework.MySQL\Tapas.Data.EntityFramework.MySQL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="CmsContent\Pages\Blog\Blog.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="CmsContent\Pages\Blog\Nested\BlogPage.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="CmsContent\Pages\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="CmsContent\Pages\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Page2.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\Page1.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="CmsContent\Pages\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Pages\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1Development_1json__JSONSchema="http://json.schemastore.org/asmdef" /></VisualStudio></ProjectExtensions>
