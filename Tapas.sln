@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Cms.FlatFile.Core.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Core.Tests", "tests\Tapas.Core.Tests\Tapas.Core.Tests.csproj", "{AF964020-26F9-4923-9B25-A9839CD9FBB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tapas.Cms.FlatFile.Backend", "src\Tapas.Cms.FlatFile.Backend\Tapas.Cms.FlatFile.Backend.csproj", "{33363886-F227-45B8-AB30-67D28F8846D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tapas.Cms.FlatFile.Backend", "src\Tapas.Cms.FlatFile.Backend\Tapas.Cms.FlatFile.Backend.csproj", "{33363886-F227-45B8-AB30-67D28F8846D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

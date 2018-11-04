@@ -68,22 +68,14 @@
                 app.UseHsts();
             }
 
-            app.UseExtCore();
-
-            serviceProvider.GetService<ApplicationDbContext>()
-                           ?.Database
-                           ?.Migrate();
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-//            app.UseMvcWithDefaultRoute();
-            app.UseMvc( routes =>
-                        {
-                            routes.MapRoute(
-                                            name: "default",
-                                            template: "{controller=Home}/{action=Index}/{id?}");
-                        });
+            app.UseMvcWithDefaultRoute();
+            app.UseExtCore();
+            serviceProvider.GetService<ApplicationDbContext>()
+                           ?.Database
+                           ?.Migrate();
         }
     }
 }

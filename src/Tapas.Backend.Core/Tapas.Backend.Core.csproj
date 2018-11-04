@@ -14,8 +14,12 @@
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.100" />
   </ItemGroup>
 
-    <ItemGroup>
-        <EmbeddedResource Include="Areas\Backend\Views\**" />
+    <ItemGroup Condition=" '$(Configuration)' == 'Debug'">
+        <Content Include="Areas\Backend\Views\**\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(Configuration)' == 'Release'">
+        <EmbeddedResource Include="Areas\Backend\Views\**\*.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

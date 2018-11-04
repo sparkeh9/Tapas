@@ -1,6 +1,7 @@
 ﻿namespace Tapas.Backend.Core.Actions
 {
     using System;
+    using System.Reflection;
     using ExtCore.Infrastructure.Actions;
     using Infrastructure.Assets;
     using Infrastructure.Menu;
@@ -8,6 +9,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Security;
+    using Tapas.Core.ExtensionMethods;
 
     public class ConfigureServicesAction : IConfigureServicesAction
     {
@@ -22,6 +24,11 @@
             serviceCollection.AddScoped<BackendScriptsViewModelFactory>();
             serviceCollection.AddScoped<BackendStylesheetViewModelFactory>();
             serviceCollection.AddSingleton<IAuthorizationHandler, ClaimOrSuperAdminHandler>();
+
+#if DEBUG
+            string extensionPath = TapasDebugExtensions.GetExtensionPath( Assembly.GetExecutingAssembly().Location, "../../../../", typeof( BackendExtensionMetadata ).Namespace );
+            serviceCollection.AddTapasDebugRazorFileProvider( extensionPath );
+#endif
         }
     }
 }

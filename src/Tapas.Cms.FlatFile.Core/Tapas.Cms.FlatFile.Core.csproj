@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Exceptions\**" />
+    <None Remove="Exceptions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ExtCore.Mvc.Infrastructure" Version="3.3.0" />
     <PackageReference Include="LibGit2Sharp-SSH-updated-libssh2" Version="1.0.25" />
     <PackageReference Include="LibGit2Sharp-SSH.NativeBinaries-libssh2-1.8.1.0" Version="1.0.16" />
@@ -12,10 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tapas.Core\Tapas.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
   </ItemGroup>
 
 </Project>

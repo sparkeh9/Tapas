@@ -7,7 +7,7 @@
     using Infrastructure.Metadata;
     using Microsoft.AspNetCore.Mvc;
 
-    public class ExtensionMetadata : IBackendExtensionMetadata
+    public class BackendExtensionMetadata : IBackendExtensionMetadata
     {
         public IUrlHelper UrlHelper { get; set; }
 
