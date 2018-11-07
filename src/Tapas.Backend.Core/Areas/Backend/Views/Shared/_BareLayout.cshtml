@@ -1,0 +1,16 @@
+﻿<!doctype html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" >
+        <meta content="ie=edge" http-equiv="x-ua-compatible" >
+        <title>@Html.Raw( this.ViewBag.Title as string )</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport" >
+        <link href="apple-touch-icon.png" rel="apple-touch-icon" >
+        @RenderSection( "Styles", required : false )
+        <!-- Place favicon.ico in the root directory -->
+    </head>
+    <body>
+        @RenderBody()
+        @RenderSection( "Scripts", required : false )
+    </body>
+</html>

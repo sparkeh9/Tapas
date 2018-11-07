@@ -2,10 +2,9 @@
 {
     using System;
     using System.Reflection;
-    using Core.ExtensionMethods;
     using ExtCore.Infrastructure.Actions;
-    using Microsoft.AspNetCore.Builder;
     using Microsoft.Extensions.DependencyInjection;
+    using Tapas.Core.ExtensionMethods;
 
     public class ConfigureServicesAction : IConfigureServicesAction
     {

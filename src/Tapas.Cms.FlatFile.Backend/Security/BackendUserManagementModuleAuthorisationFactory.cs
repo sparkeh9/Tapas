@@ -2,10 +2,10 @@
 {
     using System.Collections.Generic;
     using System.Security.Claims;
-    using Core.ExtensionMethods;
-    using Core.Security.Policy;
     using Microsoft.AspNetCore.Authorization;
     using Tapas.Backend.Core.Security;
+    using Tapas.Core.ExtensionMethods;
+    using Tapas.Core.Security.Policy;
 
     public class BackendUserManagementModuleAuthorisationFactory : IModuleAuthorisationFactory
     {
